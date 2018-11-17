@@ -24,10 +24,3 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-
-/bin/
-/build/
-./gradle/
-/saves/
-.settings/
-.gradle/
