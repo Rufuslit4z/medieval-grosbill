@@ -46,7 +46,11 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_rIkDcOjnEeiW6q6fDwiMHA" name="Dungeon"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_-27EcOjnEeiW6q6fDwiMHA" name="Level"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_7PgcYOjoEeiW6q6fDwiMHA" name="Effect"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_7PgcYOjoEeiW6q6fDwiMHA" name="Effect">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gHBiIOpnEeiaBZHznzrjqA" name="execute">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gHBiIepnEeiaBZHznzrjqA" name="card" type="_pEiysOjmEeiW6q6fDwiMHA"/>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_iAD78OjpEeiW6q6fDwiMHA" name="have" memberEnd="_iAG_QOjpEeiW6q6fDwiMHA _iATMgOjpEeiW6q6fDwiMHA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_iAGYMOjpEeiW6q6fDwiMHA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_iAGYMejpEeiW6q6fDwiMHA" key="nature" value="UML_Nature"/>
@@ -66,26 +70,54 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_J1HldOjqEeiW6q6fDwiMHA" name="malediction" type="_3ZZ_cOjmEeiW6q6fDwiMHA" association="_J1G-YOjqEeiW6q6fDwiMHA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_geTY0OjqEeiW6q6fDwiMHA" name="DrawEffect">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_PjZ0QOpmEeiaBZHznzrjqA" name="draw" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_E_3RQOjrEeiW6q6fDwiMHA" client="_geTY0OjqEeiW6q6fDwiMHA" supplier="_7PgcYOjoEeiW6q6fDwiMHA" contract="_7PgcYOjoEeiW6q6fDwiMHA"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sAAXwOpmEeiaBZHznzrjqA" name="changeCard">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sAAXwepmEeiaBZHznzrjqA" name="player" type="_VYQ_4OjnEeiW6q6fDwiMHA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sAAXwupmEeiaBZHznzrjqA" name="range" type="_VS7vwOjuEeiW6q6fDwiMHA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sAAXw-pmEeiaBZHznzrjqA" name="boolean" direction="out">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_gvw8QOjqEeiW6q6fDwiMHA" name="AttackEffect">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AO7koOpmEeiaBZHznzrjqA" name="attack" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_EItm0OjrEeiW6q6fDwiMHA" client="_gvw8QOjqEeiW6q6fDwiMHA" supplier="_7PgcYOjoEeiW6q6fDwiMHA" contract="_7PgcYOjoEeiW6q6fDwiMHA"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FpqvAOpmEeiaBZHznzrjqA" name="changeAttack">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FpqvAepmEeiaBZHznzrjqA" name="Level" type="_hKPRwOjqEeiW6q6fDwiMHA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="__xkdwOpmEeiaBZHznzrjqA" name="integer" direction="out">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_hKPRwOjqEeiW6q6fDwiMHA" name="LevelEffect">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_n4oIIOplEeiaBZHznzrjqA" name="level" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_Bq3EUOjrEeiW6q6fDwiMHA" client="_hKPRwOjqEeiW6q6fDwiMHA" supplier="_7PgcYOjoEeiW6q6fDwiMHA" contract="_7PgcYOjoEeiW6q6fDwiMHA"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_0Q990OplEeiaBZHznzrjqA" name="changeLevel">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xZDgEOpmEeiaBZHznzrjqA" name="Level" type="_-27EcOjnEeiW6q6fDwiMHA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1xZZUOpmEeiaBZHznzrjqA" name="integer" direction="out">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_R7NGUOjrEeiW6q6fDwiMHA" name="Playable"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_l50J0OjrEeiW6q6fDwiMHA" name="Head">
-    <generalization xmi:type="uml:Generalization" xmi:id="_ys0s0OjsEeiW6q6fDwiMHA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_nwHacOpnEeiaBZHznzrjqA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_mJEGwOjrEeiW6q6fDwiMHA" name="Armor">
-    <generalization xmi:type="uml:Generalization" xmi:id="_lisN0OjsEeiW6q6fDwiMHA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_s6KdcOpnEeiaBZHznzrjqA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_mYaKUOjrEeiW6q6fDwiMHA" name="Boot">
-    <generalization xmi:type="uml:Generalization" xmi:id="_zOPX0OjsEeiW6q6fDwiMHA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_qXba8OpnEeiaBZHznzrjqA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_N421wOjsEeiW6q6fDwiMHA" name="Other">
-    <generalization xmi:type="uml:Generalization" xmi:id="_kUpGUOjsEeiW6q6fDwiMHA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_sH1BkOpnEeiaBZHznzrjqA" general="_4f_NAOjmEeiW6q6fDwiMHA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_KgjnwOjtEeiW6q6fDwiMHA" name="Board">
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_fvkGsOjuEeiW6q6fDwiMHA" client="_KgjnwOjtEeiW6q6fDwiMHA" supplier="_VS7vwOjuEeiW6q6fDwiMHA" contract="_VS7vwOjuEeiW6q6fDwiMHA"/>
