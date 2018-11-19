@@ -1,7 +1,5 @@
 package com.medievalgrosbill.models.cards;
 
-import com.medievalgrosbill.database.cards.Personnage;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

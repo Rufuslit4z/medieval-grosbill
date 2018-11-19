@@ -1,9 +1,9 @@
 package com.medievalgrosbill.database.cards.equipment;
 
 import com.medievalgrosbill.database.base.BaseCRUDRepository;
-import com.medievalgrosbill.models.cards.equipment.Boots;
+import com.medievalgrosbill.models.cards.equipment.Armor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BootsRepository extends BaseCRUDRepository<Boots> {
+public interface ArmorRepository extends BaseCRUDRepository<Armor> {
 }

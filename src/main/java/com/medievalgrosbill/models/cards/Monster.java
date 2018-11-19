@@ -1,7 +1,5 @@
 package com.medievalgrosbill.models.cards;
 
-import com.medievalgrosbill.database.cards.Personnage;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,16 +14,19 @@ public class Monster extends Personnage {
     private Integer treasure;
     @Column(name="leak")
     private Integer leak;
+    @Column(name="malus")
+    private String malus;
 
     public Monster() {
         super();
     }
 
-    public Monster(Integer level, Integer treasure, Integer leak) {
+    public Monster(Integer level, Integer treasure, Integer leak, String malus) {
         super();
         this.level = level;
         this.treasure = treasure;
         this.leak = leak;
+        this.malus = malus;
     }
 
     public Integer getLevel() {
@@ -50,5 +51,13 @@ public class Monster extends Personnage {
 
     public void setLeak(Integer leak) {
         this.leak = leak;
+    }
+
+    public String getMalus() {
+        return malus;
+    }
+
+    public void setMalus(String malus) {
+        this.malus = malus;
     }
 }

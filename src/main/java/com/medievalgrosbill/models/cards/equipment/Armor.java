@@ -6,10 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="equip_head")
-public class Head extends Equipment {
+@Table(name="equip_armor")
+public class Armor extends Equipment {
 
-    public Head() {
+    public Armor() {
         super();
     }
 }

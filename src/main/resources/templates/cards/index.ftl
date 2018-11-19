@@ -1,5 +1,6 @@
 <#import "/spring.ftl" as spring/>
-<#include "../../static/javascript/cards/createCard.js" />
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<!DOCTYPE html>
 
 <form action="${detailPath}/edit" method="POST" id="formulaire" enctype="multipart/form-data">
     <label for="name">Nom :</label>
@@ -7,7 +8,7 @@
     <label for="desc">Description :</label>
     <textarea id="desc" name="description" maxlength="232" rows="9"></textarea>
     <label for="img">Image :</label>
-    <input type="file" name="img" id="img" accept="image/*">
+    <input type="file" name="imgage" id="img" accept="image/*">
     <label for="type">Type de carte :</label>
     <select name="type" onchange="addForm()">
         <option selected value="equipment">Equipement</option>
@@ -20,3 +21,5 @@
 
     <input type="submit" name="submit" value="Ajouter">
 </form>
+
+<script src="<@spring.url '/javascript/cards/createCards.js'/>"></script>

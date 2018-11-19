@@ -4,10 +4,12 @@ import com.medievalgrosbill.database.DBItem;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="card")
+@Inheritance
 public class Card extends DBItem {
 
     @Column(name="name")

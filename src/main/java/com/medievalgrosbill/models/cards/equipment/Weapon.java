@@ -1,6 +1,6 @@
 package com.medievalgrosbill.models.cards.equipment;
 
-import com.medievalgrosbill.database.DBItem;
+import com.medievalgrosbill.models.cards.Equipment;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,25 +8,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="equip_weapon")
-public class Weapon extends DBItem {
+public class Weapon extends Equipment {
 
-    @Column(name="oneHand")
-    private Boolean oneHand;
+    @Column(name="isOneHand")
+    private Boolean isOneHand;
 
     public Weapon() {
         super();
     }
 
-    public Weapon(Boolean oneHand) {
+    public Weapon(Boolean isOneHand) {
         super();
-        this.oneHand = oneHand;
+        this.isOneHand = isOneHand;
     }
 
     public Boolean getOneHand() {
-        return oneHand;
+        return isOneHand;
     }
 
     public void setOneHand(Boolean oneHand) {
-        this.oneHand = oneHand;
+        isOneHand = oneHand;
     }
 }
