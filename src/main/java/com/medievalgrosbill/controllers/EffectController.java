@@ -29,7 +29,7 @@ public class EffectController {
 	@RequestMapping(value = {"","/","/effect"}, method = RequestMethod.POST)
 	public String effectSave(@ModelAttribute Effect effect) {
 		effectService.save(effect);
-		return "redirect:"+BASE_URL+"/effect";
+		return "redirect:"+BASE_URL;
 	}
 	
 	/*
