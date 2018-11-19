@@ -121,8 +121,9 @@ public class CardController {
         return "redirect:"+this.BASE_URL+"/index";
     }
 
+    /*
     @RequestMapping(value= {"/edit"}, method=RequestMethod.POST)
     public String editDelete() {
         return "redirect:"+this.BASE_URL+"/index";
-    }
+    }*/
 }

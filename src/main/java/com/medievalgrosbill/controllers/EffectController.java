@@ -32,6 +32,18 @@ public class EffectController {
 		return "redirect:"+BASE_URL;
 	}
 	
+	@RequestMapping(value = {"/effect/edit"}, method = RequestMethod.GET)
+	public String effectEdit(@ModelAttribute Effect effect) {
+		effectService.save(effect);
+		return "redirect:"+BASE_URL;
+	}
+	
+	@RequestMapping(value = {"/show"}, method = RequestMethod.GET)
+	public String effectShow(Model model) {
+		model.addAttribute("effect", effectService.findAll());
+		return BASE_URL+"/show";
+	}
+	
 	/*
 	@Override
 	protected BaseService<Effect> getBaseService() {

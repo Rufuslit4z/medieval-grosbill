@@ -35,9 +35,17 @@
 		<div id="conteneur">
 
 			<div class="admin">
-				<h3>  MENU ADMIN</h3>
+				<h3>MENU ADMIN</h3>
 				<hr>
-				<a href="<@spring.url '/admins/effect'/>">   Add effect</a>
-				<a href="<@spring.url '/admins/cards'/>">   Add card</a>
+				<h3>Add something</h3>
+				<hr>
+				<a href="<@spring.url '/admins/cards'/>">Add card</a>
+				<a href="<@spring.url '/admins/effect'/>">Add effect</a>
+				<hr>
+				<h3>Show tables</h3>
+				<hr>
+				<a href="#">Card</a>
+				<a href="<@spring.url '/admins/effect/show'/>">Effect</a>
+				<hr>
 				<a href="<@spring.url '/'/>">   BACK</a>
 			</div>
