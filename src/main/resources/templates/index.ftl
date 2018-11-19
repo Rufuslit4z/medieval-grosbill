@@ -19,6 +19,7 @@
 						<li><a href="#">News</a></li>
 						<li><a href="#">Profil</a></li>
 						<li><a href="#">Rank</a></li>
+						<li><a href="<@spring.url '/admins'/>">Admin Panel</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -31,8 +32,6 @@
 				</nav>
 			</div>
 		</header>
-		
-		<a href="<@spring.url '/admins'/>">GO TO ADMIN</a>
 		
 		<div class="conteneur carousel">
 			<h1>Carousel</h1>

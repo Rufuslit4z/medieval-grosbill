@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home Médieval GrosBill</title>
+		<title>Home Mï¿½dieval GrosBill</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="<@spring.url '/css/admin.css'/>">
+		<link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>">
 	</head>
 	<body>
 		<header>
 			<div id="logo">
-				<p>Médieval GrosBill</p>
+				<p>Admin Panel MÃ©dieval GrosBill</p>
 			</div>
 			<div class="menu">
 				<nav>
@@ -31,23 +31,13 @@
 				</nav>
 			</div>
 		</header>
-	
-		<div class="conteneur">
+
+		<div id="conteneur">
+
 			<div class="admin">
-				<h3>MENU ADMIN</h3>
+				<h3>  MENU ADMIN</h3>
 				<hr>
-				<a href="<@spring.url '/admins/effect'/>">Add effect</a>
-				<a href="<@spring.url '/admins/card'/>">Add card</a>
-				<a href="<@spring.url '/'/>">BACK</a>
+				<a href="<@spring.url '/admins/effect'/>">   Add effect</a>
+				<a href="<@spring.url '/admins/cards'/>">   Add card</a>
+				<a href="<@spring.url '/'/>">   BACK</a>
 			</div>
-			<div class="content">
-				<div class="carousel">
-					<h1>Carousel</h1>
-				</div>		
-				<div class="presentation">
-					<h1>Présentation du jeu</h1>
-				</div>
-			</div>
-		</div>
-	</body>
-</html>

@@ -1,10 +1,6 @@
 package com.medievalgrosbill.controllers;
 
-import com.medievalgrosbill.controllers.base.BaseController;
 import com.medievalgrosbill.dtos.CompleteCardFormDTO;
-import com.medievalgrosbill.dtos.base.BaseDeleteCriteriaDTO;
-import com.medievalgrosbill.models.cards.Card;
-import com.medievalgrosbill.services.base.BaseService;
 import com.medievalgrosbill.services.cards.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
 
 @Controller
 @RequestMapping(CardController.BASE_URL)
@@ -22,7 +17,7 @@ public class CardController {
 
     private static final String BASE_ATTRIBUT_LIST = "items";
     private static final String BASE_ATTRIBUT = "item";
-    public static final String BASE_URL = "/cards";
+    public static final String BASE_URL = "/admins/cards";
     private static final String BASE_PAGE_NAME = "Cartes";
 
     @Autowired
@@ -126,7 +121,7 @@ public class CardController {
         return "redirect:"+this.BASE_URL+"/index";
     }
 
-    @RequestMapping(value= {"/edit"}, method=RequestMethod.DELETE)
+    @RequestMapping(value= {"/edit"}, method=RequestMethod.POST)
     public String editDelete() {
         return "redirect:"+this.BASE_URL+"/index";
     }

@@ -23,7 +23,7 @@ function insertCurseForm() {
 
 function insertEquipmentForm() {
     form.insertAdjacentHTML('beforeend',
-        '<select name="type_equip" id="type_equip" onChange="addEquipType()"> <option value="head">Couvre-chef</option> <option value="armor">Armure</option> <option value="boot">Bottes</option> <option value="weapon">Arme</option> <option value="other">Autres</option> </select> <label for="att">Point d\'attaque :</label> <input type="number" name="weapon.attack" id="att" min="0" max="9"> <label id="cost">Valeur pièce d\'or :</label> <input type="number" name="weapon.cost" id="cost" min="0" max="2000"> <label for="type_equip">Type d\'équipement :</label> <label>Poids :</label> <input type="radio" name="weapon.weight" value=true id="big"> <label for="big" class="radio">Gros</label> <input type="radio" name="equipment.weight" value=false id="normal" checked> <label for="normal" class="radio">Normal</label>'
+        '<label for="type_equip">Type d\'équipement :</label> <select name="type_equip" id="type_equip" onChange="addEquipType()"> <option value="head">Couvre-chef</option> <option value="armor">Armure</option> <option value="boot">Bottes</option> <option value="weapon">Arme</option> <option value="other">Autres</option> </select> <label for="att">Point d\'attaque :</label> <input type="number" name="weapon.attack" id="att" min="0" max="9"> <label id="cost">Valeur pièce d\'or :</label> <input type="number" name="weapon.cost" id="cost" min="0" max="2000"> <label>Poids :</label> <input type="radio" name="weapon.weight" value=true id="big"> <label for="big" class="radio">Gros</label> <input type="radio" name="equipment.weight" value=false id="normal" checked> <label for="normal" class="radio">Normal</label>'
     );
 }
 
