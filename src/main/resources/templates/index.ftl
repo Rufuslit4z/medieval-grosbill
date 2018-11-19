@@ -31,7 +31,9 @@
 				</nav>
 			</div>
 		</header>
-	
+		
+		<a href="<@spring.url '/admins'/>">GO TO ADMIN</a>
+		
 		<div class="conteneur carousel">
 			<h1>Carousel</h1>
 		</div>

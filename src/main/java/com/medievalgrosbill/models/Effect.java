@@ -2,12 +2,14 @@ package com.medievalgrosbill.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
 import javax.persistence.Table;
 
 import com.medievalgrosbill.database.DBItem;
 
 @Entity
 @Table(name="effect")
+@Inheritance
 public class Effect extends DBItem {
 	
 	@Column(name="name")
@@ -22,11 +24,11 @@ public class Effect extends DBItem {
 	@Column(name="lose")
 	private Integer lose;
 
-	public String getEffect() {
+	public String getName() {
 		return name;
 	}
 
-	public void setEffect(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

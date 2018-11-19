@@ -36,8 +36,9 @@
 			<div class="admin">
 				<h3>MENU ADMIN</h3>
 				<hr>
-				<a href="/admins/effect">Add effect</a>
-				<a href="#">Add card</a>
+				<a href="<@spring.url '/admins/effect'/>">Add effect</a>
+				<a href="<@spring.url '/admins/card'/>">Add card</a>
+				<a href="<@spring.url '/'/>">BACK</a>
 			</div>
 			<div class="content">
 				<div class="carousel">

@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.medievalgrosbill.database.DBItem;
-import com.medievalgrosbill.database.base.BaseCRUDRepository;
-
 public abstract class BaseService<T extends DBItem> {
 	
 	protected abstract BaseCRUDRepository<T> getCRUDRepository();

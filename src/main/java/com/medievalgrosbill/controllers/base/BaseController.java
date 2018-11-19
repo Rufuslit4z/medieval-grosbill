@@ -24,18 +24,10 @@ public abstract class BaseController<T extends DBItem> {
 
 	@RequestMapping(value = {"","/","/index"}, method=RequestMethod.GET)
 	public String index(Model model) {
-		//model.addAttribute(BASE_ATTRIBUT_LIST,this.getBaseService().findAll());
-		//model.addAttribute("pageName",this.getBasePageName()+" index");
-		//model.addAttribute("detailPath",this.getBaseURL());
+		model.addAttribute(BASE_ATTRIBUT_LIST,this.getBaseService().findAll());
+		model.addAttribute("pageName",this.getBasePageName()+" index");
+		model.addAttribute("detailPath",this.getBaseURL());
 		return this.getBaseURL()+"/index";
-	}
-	
-	@RequestMapping(value = {"/admins","/admins/index"}, method=RequestMethod.GET)
-	public String admins(Model model) {
-		//model.addAttribute(BASE_ATTRIBUT_LIST,this.getBaseService().findAll());
-		//model.addAttribute("pageName",this.getBasePageName()+" index");
-		//model.addAttribute("detailPath",this.getBaseURL());
-		return this.getBaseURL()+"/admins";
 	}
 
     @RequestMapping(value= {"/delete/{id}"}, method=RequestMethod.GET)

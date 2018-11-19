@@ -34,5 +34,6 @@
                 <input type="submit" value="Save">
             </div>
         </form>
+        <a href="<@spring.url '/admins'/>">BACK</a>
     </body>
 </html>
