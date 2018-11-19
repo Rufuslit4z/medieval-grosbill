@@ -1,5 +1,8 @@
 package com.medievalgrosbill.services.base;
 
+import com.medievalgrosbill.database.DBItem;
+import com.medievalgrosbill.database.base.BaseCRUDRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
