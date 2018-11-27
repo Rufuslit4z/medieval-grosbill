@@ -1,13 +1,28 @@
 package com.medievalgrosbill.models.cards;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.util.List;
 
 @Entity
-@Table(name="Curse")
 public class Curse extends Card {
+
+    @Column(name="effect")
+    private List<Object> effect; //Change Object to Effect Class
 
     public Curse() {
         super();
+    }
+
+    public Curse(List<Object> effect) {
+        this.effect = effect;
+    }
+
+    public List<Object> getEffect() {
+        return effect;
+    }
+
+    public void setEffect(List<Object> effect) {
+        this.effect = effect;
     }
 }
