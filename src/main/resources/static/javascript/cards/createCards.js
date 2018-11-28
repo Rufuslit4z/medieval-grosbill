@@ -2,10 +2,22 @@ var parent = document.getElementById('formulaire');
 var form = document.getElementById('insertForm');
 var formWeapon = document.getElementById('insertFormWeapon');
 
+function reset() {
+    document.getElementsByClassName('bonus1').innerText="";
+    document.getElementsByClassName('bonus2').innerText="";
+    document.getElementsByClassName('leftbot').innerText="";
+    document.getElementsByClassName('rightbot').innerText="";
+}
+
+function printCost(c) {
+    var a = document.getElementsByClassName('rightbot');
+    (c > 0) ? a.innerText=c+' pièces d\'or' : a.innerText="";
+}
 
 function insertMonsterForm() {
+    reset();
     form.insertAdjacentHTML('beforeend',
-        '<label for="lvl">Niveau :</label> <input type="number" name="monster.level" id="lvl" min="1" max="99"> <label for="treasure">Trésor(s) gagné(s) :</label> <input type="number" name="monster.treasure" id="treasure" min="1" max="9"> <label for="leak">Minimum fuite :</label> <select name="monster.leak" id="leak"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option><option value="4">4</option> <option value="5" selected>5</option> </select> <label for="malus">Action si fuite raté :</label> <select name="monster.malus" id="malus"> <option value="">Effet 1</option> <option value="">Effet 2</option> </select>'
+        '<label for="lvl">Niveau :</label> <input type="number" name="level" id="lvl" min="1" max="99" onkeyup="bonus1.innerText=this.value;bonus2.innerText=this.value"> <label for="treasure">Trésor(s) gagné(s) :</label> <input type="number" name="treasure" id="treasure" min="1" max="9" onkeyup="this.value>1?rightbot.innerText=this.value+\' trésors\':rightbot.innerText=this.value+\' trésor\';"> <label for="leak">Minimum fuite :</label> <select name="leak" id="leak"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option><option value="4">4</option> <option value="5" selected>5</option> </select> <label for="malus">Action si fuite raté :</label> <select name="malus" id="malus"> <option value="">Effet 1</option> <option value="">Effet 2</option> </select>'
     );
     document.getElementById('name').setAttribute('name', "monster.name");
     document.getElementById("desc").setAttribute("name", "monster.description");
@@ -13,8 +25,9 @@ function insertMonsterForm() {
 }
 
 function insertCurseForm() {
+    reset();
     form.insertAdjacentHTML('beforeend',
-        '<label for="curse">Effet malédiction :</label> <select name="curse.curse" id="curse"> <option value="">Malédiction 1</option> <option value="">Malédiction 2</option> </select>'
+        '<label for="curse">Effet malédiction :</label> <select name="curse" id="curse"> <option value="">Malédiction 1</option> <option value="">Malédiction 2</option> </select>'
     );
     document.getElementById('name').setAttribute('name', "curse.name");
     document.getElementById("desc").setAttribute("name", "curse.description");
@@ -22,21 +35,23 @@ function insertCurseForm() {
 }
 
 function insertEquipmentForm() {
+    reset();
     form.insertAdjacentHTML('beforeend',
-        '<select name="type_equip" id="type_equip" onChange="addEquipType()"> <option value="head">Couvre-chef</option> <option value="armor">Armure</option> <option value="boot">Bottes</option> <option value="weapon">Arme</option> <option value="other">Autres</option> </select> <label for="att">Point d\'attaque :</label> <input type="number" name="weapon.attack" id="att" min="0" max="9"> <label id="cost">Valeur pièce d\'or :</label> <input type="number" name="weapon.cost" id="cost" min="0" max="2000"> <label for="type_equip">Type d\'équipement :</label> <label>Poids :</label> <input type="radio" name="weapon.weight" value=true id="big"> <label for="big" class="radio">Gros</label> <input type="radio" name="equipment.weight" value=false id="normal" checked> <label for="normal" class="radio">Normal</label>'
+        '<label for="att">Point d\'attaque :</label> <input type="number" name="attack" id="att" min="0" max="9" onkeyup="bonus1.innerText=\'+\'+this.value;bonus2.innerText=\'+\'+this.value"> <label id="cost">Valeur pièce d\'or :</label> <input type="number" name="cost" id="cost" min="0" max="2000" onkeyup="printCost(this.value)"> <label for="type_equip">Type d\'équipement :</label> <select name="type_equip" id="type_equip" onChange="addEquipType()"> <option value="head">Couvre-chef</option> <option value="armor">Armure</option> <option value="boot">Bottes</option> <option value="weapon">Arme</option> <option value="other">Autres</option> </select> <label>Poids :</label> <input type="radio" name="weight" value="big" id="big"> <label for="big" class="radio">Gros</label> <input type="radio" name="weight" value="normal" id="normal" checked> <label for="normal" class="radio">Normal</label>'
     );
 }
 
 function insertWeaponForm() {
+    reset();
     formWeapon.insertAdjacentHTML('beforeend',
-        '<label>Nombres de main :</label> <input type="radio" name="weapon.oneHand" value=true id="1hand" checked> <label for="1hand" class="radio">1 main</label> <input type="radio" name="weapon.oneHand" value=false id="2hand"> <label for="2hand" class="radio">2 mains</label>'
+        '<label>Nombres de main :</label> <input type="radio" name="hand" value="1" id="1hand" checked> <label for="1hand" class="radio">1 main</label> <input type="radio" name="hand" value="2" id="2hand"> <label for="2hand" class="radio">2 mains</label>'
     );
     document.getElementById('name').setAttribute('name', "weapon.name");
     document.getElementById("desc").setAttribute("name", "weapon.description");
     document.getElementById('img').setAttribute('name', "weapon.imgage");
 }
 
-insertEquipmentForm();
+addForm();
 
 function addForm() {
     form.innerHTML = "";
@@ -53,6 +68,40 @@ function addForm() {
             break;
         default:
             break;
+    }
+}
+
+function selectForm(dtype) {
+    form.innerHTML="";
+    formWeapon.innerHTML="";
+    var select = document.getElementById('select_type');
+    if (dtype === "monster") {
+        select.selectedIndex=1;
+        insertMonsterForm();
+    } else if (dtype === "curse") {
+        select.selectedIndex=2;
+        insertCurseForm();
+    } else if (dtype === "weapon") {
+        select.selectedIndex=0;
+        insertEquipmentForm();
+        insertWeaponForm();
+        document.getElementById('type_equip').selectedIndex=3
+    } else if (dtype === "boots") {
+        select.selectedIndex=0;
+        insertEquipmentForm();
+        document.getElementById('type_equip').selectedIndex=2
+    } else if (dtype === "head") {
+        select.selectedIndex=0;
+        insertEquipmentForm();
+        document.getElementById('type_equip').selectedIndex=0
+    } else if (dtype === "armor") {
+        select.selectedIndex=0;
+        insertEquipmentForm();
+        document.getElementById('type_equip').selectedIndex=1
+    } else if (dtype === "other") {
+        select.selectedIndex=0;
+        insertEquipmentForm();
+        document.getElementById('type_equip').selectedIndex=4
     }
 }
 

@@ -2,11 +2,11 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <!DOCTYPE html>
 
-<form action="${detailPath}/edit" method="POST" id="formulaire" enctype="multipart/form-data">
+<form action="${detailPath}/edit" method="POST" id="formulaire">
     <label for="name">Nom :</label>
-    <input type="text" name="name" id="name" maxlength="64">
+    <input type="text" name="name" id="name" maxlength="64" onkeypress="title_card.innerText=this.value">
     <label for="desc">Description :</label>
-    <textarea id="desc" name="description" maxlength="232" rows="9"></textarea>
+    <textarea id="desc" name="description" maxlength="232" rows="9" onkeypress="desc_card.innerText=this.value"></textarea>
     <label for="img">Image :</label>
     <input type="file" name="imgage" id="img" accept="image/*">
     <label for="type">Type de carte :</label>
