@@ -18,12 +18,9 @@ public class Effect extends DBItem {
 	@Column(name="type")
 	private String type;
 	
-	@Column(name="win")
-	private Integer win;
+	@Column(name="value")
+	private Integer value;
 	
-	@Column(name="lose")
-	private Integer lose;
-
 	public String getName() {
 		return name;
 	}
@@ -39,29 +36,20 @@ public class Effect extends DBItem {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public Integer getWin() {
-		return win;
-	}
-
-	public void setWin(Integer win) {
-		this.win = win;
-	}
-
-	public Integer getLose() {
-		return lose;
-	}
-
-	public void setLose(Integer lose) {
-		this.lose = lose;
-	}
 	
-	public Effect(String name, String type, Integer win, Integer lose) {
+	public Integer getValue() {
+		return value;
+	}
+
+	public void setValue(Integer value) {
+		this.value = value;
+	}
+
+	public Effect(String name, String type, Integer value) {
 		this();
 		this.name = name;
 		this.type = type;
-		this.win = win;
-		this.lose = lose;
+		this.value = value;
 	}
 	
 	public Effect() {

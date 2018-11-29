@@ -18,7 +18,7 @@ public class CardController {
 
     private static final String BASE_ATTRIBUT_LIST = "cards";
     private static final String BASE_ATTRIBUT = "card";
-    public static final String BASE_URL = "/cards";
+    public static final String BASE_URL = "/admins/cards";
     private static final String BASE_PAGE_NAME = "Cartes";
 
     @Autowired

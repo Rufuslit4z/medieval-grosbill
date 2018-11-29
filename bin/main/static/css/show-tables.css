@@ -1,0 +1,50 @@
+body, html {
+	height: 100%;
+	width : 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+hr {
+	width: 40%;
+}
+
+table {
+	width: 40%;
+	padding: 1em;
+	box-shadow: 
+	 1em  1em calc(1em/4) #2e4053  inset,
+	-1em  1em calc(1em/4) #d35400 inset,
+	 1em -1em calc(1em/4) #2e4053  inset,
+	-1em -1em calc(1em/4) #2e4053  inset;
+	
+	border: 1px solid black;
+}
+
+a {
+	text-decoration: none;
+}
+
+#new {
+	font-weight: bold;
+	color: #2980b9;
+}
+
+#delete {
+	font-weight: bold;
+	color: #e74c3c;
+}
+
+tr:first-child {
+	font-weight: bolder;  
+}
+
+tr, td {
+	border: 1px solid black;
+	text-align: center;
+}
