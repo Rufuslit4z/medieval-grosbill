@@ -27,7 +27,7 @@
 				<nav>
 					<ul>
 						<li><a href="#">Login</a></li>
-						<li><a href="#">Register</a></li>
+						<li><a href="<@spring.url '/register'/>">Register</a></li>
 					</ul>
 				</nav>
 			</div>
