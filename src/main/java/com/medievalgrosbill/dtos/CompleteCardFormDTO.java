@@ -1,6 +1,5 @@
 package com.medievalgrosbill.dtos;
 
-
 import com.medievalgrosbill.models.cards.Curse;
 import com.medievalgrosbill.models.cards.Monster;
 import com.medievalgrosbill.models.cards.equipment.*;

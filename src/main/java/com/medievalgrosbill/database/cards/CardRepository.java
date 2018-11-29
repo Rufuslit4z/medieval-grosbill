@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface CardRepository extends BaseCRUDRepository<Card> {
 
-    List<Card> findByName(String name);
+    List<Card> findByNameContains(String name);
 }

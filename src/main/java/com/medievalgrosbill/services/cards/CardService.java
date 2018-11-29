@@ -22,9 +22,10 @@ public class CardService extends BaseService<Card> {
 
     @Override
     protected List<Card> setItemsByCriterias(Card item, List<Card> result) {
-        if (!item.getName().equals("")) {
-            result = this.cardRepository.findByName(item.getName());
-        }
-        return result;
+        return null;
+    }
+
+    public List<Card> findByName(String name) {
+        return this.cardRepository.findByNameContains(name);
     }
 }

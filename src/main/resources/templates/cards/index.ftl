@@ -2,24 +2,30 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <!DOCTYPE html>
 
-<form action="${detailPath}/edit" method="POST" id="formulaire">
-    <label for="name">Nom :</label>
-    <input type="text" name="name" id="name" maxlength="64" onkeypress="title_card.innerText=this.value">
-    <label for="desc">Description :</label>
-    <textarea id="desc" name="description" maxlength="232" rows="9" onkeypress="desc_card.innerText=this.value"></textarea>
-    <label for="img">Image :</label>
-    <input type="file" name="imgage" id="img" accept="image/*">
-    <label for="type">Type de carte :</label>
-    <select name="type" onchange="addForm()">
-        <option selected value="equipment">Equipement</option>
-        <option value="monster">Monstre</option>
-        <option value="curse">Malédiction</option>
-    </select>
-
-    <div id="insertForm"></div>
-    <div id="insertFormWeapon"></div>
-
-    <input type="submit" name="submit" value="Ajouter">
+<form action="${detailPath}/find" method="POST">
+    <label for="search">Rechercher :</label>
+    <input type="search" name="search" id="search">
 </form>
 
-<script src="<@spring.url '/javascript/cards/createCards.js'/>"></script>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Bonus/Level</th>
+        <th>Trésor</th>
+        <th>Effet</th>
+        <th>Modification</th>
+    </tr>
+<#if cards??>
+    <#list cards as c>
+        <tr>
+            <td>${c.name}</td>
+            <td>test</td>
+            <td><#if c.level??>${c.level}</#if><#if c.attack??>${c.attack}</#if></td>
+            <td><#if c.treasure??>${c.treasure}</#if></td>
+            <td><#if c.effect??>${c.effect}</#if></td>
+            <td><a href="${detailPath}/edit/${c.id}">Modifier</a> <a href="${detailPath}/delete/${c.id}">Supprimer</a></td>
+        </tr>
+    </#list>
+</#if>
+</table>

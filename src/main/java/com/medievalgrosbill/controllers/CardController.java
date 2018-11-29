@@ -9,18 +9,15 @@ import com.medievalgrosbill.services.cards.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
 @RequestMapping(CardController.BASE_URL)
 public class CardController {
 
-    private static final String BASE_ATTRIBUT_LIST = "items";
-    private static final String BASE_ATTRIBUT = "item";
+    private static final String BASE_ATTRIBUT_LIST = "cards";
+    private static final String BASE_ATTRIBUT = "card";
     public static final String BASE_URL = "/cards";
     private static final String BASE_PAGE_NAME = "Cartes";
 
@@ -35,35 +32,59 @@ public class CardController {
         return this.BASE_URL+"/index";
     }
 
-    @RequestMapping(value= {"/edit"}, method=RequestMethod.GET)
+    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    public String find(Model model, @RequestParam String search) {
+        if (!search.equals("")) {
+            model.addAttribute(BASE_ATTRIBUT_LIST,this.cardService.findByName(search));
+        }
+        model.addAttribute("detailPath",this.BASE_URL);
+        return this.BASE_URL+"/index";
+    }
+
+    @RequestMapping(value= {"/create"}, method=RequestMethod.GET)
     public String create(Model model) {
         model.addAttribute("pageName",this.BASE_PAGE_NAME+" create");
         model.addAttribute("detailPath",this.BASE_URL);
-        return this.BASE_URL+"/edit";
+        return this.BASE_URL+"/create";
     }
 
     @RequestMapping(value= {"/edit/{id}"}, method=RequestMethod.GET)
     public String edit(Model model, @PathVariable Integer id) {
         Card card = this.cardService.find(id).get();
         if (card instanceof Monster) {
-            model.addAttribute("card", (Monster)card);
+            model.addAttribute(BASE_ATTRIBUT, (Monster)card);
+            model.addAttribute("type","monster");
+            model.addAttribute("switch","monster");
         } else if (card instanceof Curse) {
-            model.addAttribute("card", (Curse)card);
+            model.addAttribute(BASE_ATTRIBUT, (Curse)card);
+            model.addAttribute("type","curse");
+            model.addAttribute("switch","monster");
         } else if (card instanceof Armor) {
-            model.addAttribute("card", (Armor)card);
+            model.addAttribute(BASE_ATTRIBUT, (Armor)card);
+            model.addAttribute("type","armor");
+            model.addAttribute("switch","equipment");
         } else if (card instanceof Boots) {
-            model.addAttribute("card", (Boots)card);
+            model.addAttribute(BASE_ATTRIBUT, (Boots)card);
+            model.addAttribute("type","boots");
+            model.addAttribute("switch","equipment");
         } else if (card instanceof Head) {
-            model.addAttribute("card", (Head)card);
+            model.addAttribute(BASE_ATTRIBUT, (Head)card);
+            model.addAttribute("type","head");
+            model.addAttribute("switch","equipment");
         } else if (card instanceof Other) {
-            model.addAttribute("card", (Other)card);
+            model.addAttribute(BASE_ATTRIBUT, (Other)card);
+            model.addAttribute("type","other");
+            model.addAttribute("switch","equipment");
         } else if (card instanceof Weapon) {
-            model.addAttribute("card", (Weapon)card);
+            model.addAttribute(BASE_ATTRIBUT, (Weapon)card);
+            model.addAttribute("type","weapon");
+            model.addAttribute("switch","equipment");
         }
+        model.addAttribute("detailPath",this.BASE_URL);
         return this.BASE_URL+"/edit";
     }
 
-    @RequestMapping(value= {"/edit"}, method=RequestMethod.POST)
+    @RequestMapping(value= {"/create"}, method=RequestMethod.POST)
     public String editSave(@ModelAttribute CompleteCardFormDTO form) {
         if (form.getMonster() != null) {
             this.cardService.save(form.getMonster());
@@ -80,12 +101,12 @@ public class CardController {
         } else if (form.getWeapon() != null) {
             this.cardService.save(form.getWeapon());
         }
-
-        return "redirect:"+this.BASE_URL+"/index";
+        return "redirect:"+this.BASE_URL+"/create";
     }
 
-    @RequestMapping(value= {"/edit"}, method=RequestMethod.DELETE)
-    public String editDelete() {
-        return "redirect:"+this.BASE_URL+"/index";
+    @RequestMapping(value= {"/delete/{id}"}, method=RequestMethod.GET)
+    public String editDelete(@PathVariable Integer id) {
+        this.cardService.deleteById(id);
+        return "redirect:"+this.BASE_URL;
     }
 }
