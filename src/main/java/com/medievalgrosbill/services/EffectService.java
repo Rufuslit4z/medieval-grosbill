@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.medievalgrosbill.database.base.BaseCRUDRepository;
-import com.medievalgrosbill.database.base.EffectRepository;
+import com.medievalgrosbill.database.effect.EffectRepository;
 import com.medievalgrosbill.models.Effect;
 import com.medievalgrosbill.services.base.BaseService;
 
@@ -15,11 +15,11 @@ public class EffectService extends BaseService<Effect> {
 
 	@Autowired
 	private EffectRepository effectRepository;
-	
+
 	@Override
 	protected BaseCRUDRepository<Effect> getCRUDRepository() {
 		// TODO Auto-generated method stub
-		return effectRepository;
+		return this.effectRepository;
 	}
 
 	@Override
@@ -28,4 +28,8 @@ public class EffectService extends BaseService<Effect> {
 		return null;
 	}
 
+	public Effect findByName(String name) {
+		return this.effectRepository.findByName(name);
+	}
+	
 }

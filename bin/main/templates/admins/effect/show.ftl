@@ -1,16 +1,16 @@
 <#import "/spring.ftl" as spring/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/show-tables.css'/>">
 <h1>SHOW EFFECT</h1>
-
+<hr>
 <table>
 	<tr>
 		<td>ID</td>
 		<td>NAME</td>
 		<td>TYPE</td>
 		<td>VALUE</td>
-		<td><a href="<@spring.url '/admins/effect'/>">+</a></td>
+		<td><a id="new" href="<@spring.url '/admins/effect'/>">NEW</a></td>
 	</tr>
-<#list effect as fx>
+<#list effects as fx>
 	<tr>
 	<#if fx.getId()??>
 		<td>${fx.getId()}</td>
@@ -32,9 +32,10 @@
 	<#else>
 		<td>NULL</td>
 	</#if>
-	<td id="${fx.getId()}">-</td>
+		<td><a id="edit" href="<@spring.url '/admins/effect/edit/${fx.getId()}'/>">MODIFIER</a></td>
+		<td><a id="delete" href="<@spring.url '/admins/effect/delete/${fx.getId()}'/>">DELETE</a></td>
 	</tr>		
 </#list>
 </table>
-<br>
+<hr>
 <a href="<@spring.url '/admins'/>">BACK</a>

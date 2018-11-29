@@ -26,7 +26,6 @@ repositories {
 
 
 dependencies {
-<<<<<<< HEAD
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	
 	// View
@@ -38,13 +37,8 @@ dependencies {
 	implementation 'com.google.firebase:firebase-admin:6.5.0'
 	
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
-=======
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	// View
-	implementation('org.springframework.boot:spring-boot-starter-freemarker')
-	// Database
-	runtimeOnly('mysql:mysql-connector-java')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
->>>>>>> b41edbef4b32ff4a7351561e09ba7fba3a84b30b
+	
+	// Security
+	// compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
+	// provided group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
 }

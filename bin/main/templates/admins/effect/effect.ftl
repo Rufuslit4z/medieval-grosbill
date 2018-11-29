@@ -17,9 +17,9 @@
             <div class="data">
                 <p>Type effect</p>
                 <select name="type" size="1">
-                    <option>type</option>
-                    <option>level</option>
-                    <option>attack</option>
+                    <option>niveau</option>
+                    <option>attaque</option>
+                    <option>cartes</option>
                 </select>
             </div>
             <div class="data">

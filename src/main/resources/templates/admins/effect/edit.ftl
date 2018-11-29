@@ -1,35 +1,34 @@
 <#import "/spring.ftl" as spring/>
 
-<h1>${pageName}</h1>
-<div>
-
-<form action="${detailPath}/edit" method="POST">
-<#if item??>
-    <div>Id</div>
-    <#if item.getId()??>
-    <div>${item.getId()}</div>
-    <input type="hidden" name="id" value="${item.getId()}">
-    <#else>
-    <div>NA</div>
-    </#if>
-</#if>
-    <div>Firstname</div>
-    <input type="text" name="firstname" value="<#if item?? && item.getFirstname()??>${item.getFirstname()}</#if>">
-    <div>Lastname</div>
-    <input type="text" name="lastname" value="<#if item?? && item.getLastname()??>${item.getLastname()}</#if>">
-    
-    <#if roles??>
-    <select name="role">
-        <#list roles as r>
-            <option value=${r.getId()}>${r.getName()}</option>
-        </#list>
-    </select>
-    </#if>
-    <div><input type="submit" value="Save"></div>
-</form> 
-
-<#if item?? && item.getId()??>
-	<div><a href="${detailPath}/delete/${item.getId()}">Delete</a></div>
-</#if>
-</div>
-<div><a href="${detailPath}/index">Back</a></div>
+<html>
+    <head>
+        <title>Home Médieval GrosBill</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="<@spring.url '/css/form.css'/>">
+    </head>
+    <body>
+        <h1>CREATE EFFECT</h1>
+        <hr>
+        <form method="POST">
+            <div class="data">
+                <p> Effect name</p>
+                <input name="name" type="text" placeholder="name" value="${effect.getName()}">
+            </div>
+            <div class="data">
+                <p>Type effect</p>
+                <select name="type" size="1">
+                    <option <#if effect.getType() == "niveau"> selected</#if>>niveau</option>
+                    <option <#if effect.getType() == "attaque"> selected</#if>>attaque</option>
+                    <option <#if effect.getType() == "cartes"> selected</#if>>cartes</option>
+                </select>
+            </div>
+            <div class="data">
+                <p>Value</p>
+                <input name="value" type="number" value="${effect.getValue()}">
+            </div>
+            <div class="submit">
+                <input type="submit" id="submit" value="Save">
+            </div>
+        </form>
+    </body>
+</html>
