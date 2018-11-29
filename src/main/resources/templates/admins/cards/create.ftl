@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
-<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
-<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>"/>
+<#include "../menu_admin.ftl">
 
 <form action="${detailPath}/create" method="POST" id="formulaire">
     <label for="name">Nom :</label>
@@ -21,5 +21,8 @@
 
     <input type="submit" name="submit" value="Ajouter">
 </form>
-
+<script type="text/javascript">
+    console.log("test");
+    var effectList = '<#list effect as e><option value="${e.id}">${e.name}</option></#list>';
+</script>
 <script src="<@spring.url '/javascript/cards/createCards.js'/>"></script>

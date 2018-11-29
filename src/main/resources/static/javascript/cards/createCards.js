@@ -27,7 +27,7 @@ function insertMonsterForm() {
 function insertCurseForm() {
     reset();
     form.insertAdjacentHTML('beforeend',
-        '<label for="curse">Effet malédiction :</label> <select name="curse.effect" id="curse"> <option value="">Malédiction 1</option> <option value="">Malédiction 2</option> </select>'
+        '<label for="curse">Effet malédiction :</label> <select name="curse.effect" id="curse">'+ effectList +' </select>'
     );
     document.getElementById('name').setAttribute('name', "curse.name");
     document.getElementById("desc").setAttribute("name", "curse.description");

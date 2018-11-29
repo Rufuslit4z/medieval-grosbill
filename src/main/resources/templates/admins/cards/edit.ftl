@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
-<!DOCTYPE html>
+<#include "../menu_admin.ftl">
 
 <form action="${detailPath}/create" method="POST" id="formulaire">
     <input type="hidden" name="${type}.id" value="${card.getId()}">

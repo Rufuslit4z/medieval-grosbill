@@ -5,6 +5,7 @@ import com.medievalgrosbill.models.cards.Card;
 import com.medievalgrosbill.models.cards.Curse;
 import com.medievalgrosbill.models.cards.Monster;
 import com.medievalgrosbill.models.cards.equipment.*;
+import com.medievalgrosbill.services.EffectService;
 import com.medievalgrosbill.services.cards.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class CardController {
 
     @Autowired
     private CardService cardService;
+
+    @Autowired
+    private EffectService effectService;
 
     @RequestMapping(value= {"","/","/index"}, method=RequestMethod.GET)
     public String index(Model model) {
@@ -44,7 +48,8 @@ public class CardController {
     @RequestMapping(value= {"/create"}, method=RequestMethod.GET)
     public String create(Model model) {
         model.addAttribute("pageName",this.BASE_PAGE_NAME+" create");
-        model.addAttribute("detailPath",this.BASE_URL);
+        model.addAttribute("detailPath", this.BASE_URL);
+        model.addAttribute("effect", this.effectService.findAll());
         return this.BASE_URL+"/create";
     }
 
