@@ -10,9 +10,9 @@
     <div class="admin">
         <h3>MENU ADMIN</h3>
         <ul>
-            <li><a href="/admins/cards">Cards</a></li>
-            <li><a href="/admins/effect">Effects</a></li>
-            <li><a href="/admins/users">Utilisateurs</a></li>
-            <li><a href="/admins/roles">Roles</a></li>
+            <li><a href="<@spring.url '/admins/cards'/>">Cartes</a></li>
+            <li><a href="<@spring.url '/admins/effect'/>">Effet</a></li>
+            <li><a href="<@spring.url '/admins/user'/>">Utilisateur</a></li>
+            <li><a href="<@spring.url '/admins/role'/>">Role</a></li>
         </ul>
     </div>

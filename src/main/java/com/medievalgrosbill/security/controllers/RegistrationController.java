@@ -36,18 +36,21 @@ public class RegistrationController {
     }
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute() User user, @RequestParam String passwordconfirm, BindingResult bindingResult, Model model) {
-        userValidator.validate(user, bindingResult);
+    public String registration(@ModelAttribute User user, @RequestParam String passwordconfirm, BindingResult bindingResult, Model model) {
+        this.userValidator.validate(user, bindingResult);
 
+        model.addAttribute("postresult", bindingResult);
+        
         if (bindingResult.hasErrors() || !user.getPassword().equals(passwordconfirm)) {
-            //model.addAttribute("postresult",bindingResult);
+            model.addAttribute("postresult", bindingResult);
         	return "redirect:/registration";
         }
 
-        user.getRoles().add(roleService.findByName("USER"));
-        userService.save(user);
+        user.getRoles().add(this.roleService.findByName("USER"));
+        user.setActive(1);
+        this.userService.save(user);
         
-        userDetailsServiceImpl.autologin(user.getEmail(), user.getPassword());
+        this.userDetailsServiceImpl.autologin(user.getEmail(), user.getPassword());
         
         return "redirect:/";
     }

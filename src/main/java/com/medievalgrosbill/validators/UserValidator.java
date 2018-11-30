@@ -1,5 +1,7 @@
 package com.medievalgrosbill.validators;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -22,10 +24,14 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstname", "NotEmpty");
-        if (user.getUsername().length() < 5 || user.getUsername().length() > 32) {
-            errors.rejectValue("firstname", "Size.userForm.firstname");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");        
+        if(user.getUsername().length() < 4 || user.getUsername().length() > 32) {
+        	errors.rejectValue("username", "Size.userForm.username");
+        } 
+//        else if (this.userService.findByUsername(user.getUsername()) != null) {
+//        	errors.rejectValue("username", "Duplicate.userForm.username");
+//        }
+        
                 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
         if (this.userService.findByEmail(user.getEmail()) != null) {

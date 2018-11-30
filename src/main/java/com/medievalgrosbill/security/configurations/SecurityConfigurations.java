@@ -33,9 +33,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 							,"/registration"
 							,"/errors/**")
 						.permitAll()
-//					.antMatchers("/users/edit/**").access("hasRole('ROLE_ADMIN')")
-					.anyRequest()
-						.authenticated()
+					.antMatchers("/admins/**").access("hasRole('ROLE_ADMIN')")
+//					.anyRequest()
+//						.authenticated()
 			.and()
 				.formLogin()
 					.loginPage(LoginController.LOGIN)

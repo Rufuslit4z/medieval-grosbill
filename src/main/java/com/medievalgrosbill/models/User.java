@@ -33,9 +33,6 @@ public class User extends DBItem {
 	@ManyToMany()
 	private List<Role> roles;
 	
-//	@ManyToOne()
-//	private Role role;
-	
 	@Column(name = "active")
 	private Integer active;
 	
