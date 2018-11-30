@@ -1,6 +1,5 @@
 <#import "/spring.ftl" as spring/>
 <#include "../../general/header.ftl">
-<link rel="stylesheet" type="text/css" href="<@spring.url '/css/sttyle.css'/>"/>
 
 <div id="conteneur">
 
