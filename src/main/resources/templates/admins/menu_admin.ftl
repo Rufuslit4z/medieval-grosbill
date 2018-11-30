@@ -10,9 +10,9 @@
     <div class="admin">
         <h3>MENU ADMIN</h3>
         <ul>
-            <li><a href="cards">Cards</a></li>
-            <li><a href="effect">Effects</a></li>
-            <li><a href="users">Utilisateurs</a></li>
-            <li><a href="roles">Roles</a></li>
+            <li><a href="/admins/cards">Cards</a></li>
+            <li><a href="/admins/effect">Effects</a></li>
+            <li><a href="/admins/users">Utilisateurs</a></li>
+            <li><a href="/admins/roles">Roles</a></li>
         </ul>
     </div>
