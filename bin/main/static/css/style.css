@@ -2,6 +2,9 @@
 	margin: 0px;
 	padding: 0px;
 }
+html, body {
+	height: 100%;
+}
 
 
 /***************************************************************/
@@ -11,7 +14,6 @@ header {
 	background-color: red;
 	display: flex;
 	height: 50px;
-	margin-bottom: 100px;
 }
 #logo {
 	width: 20%;
@@ -59,11 +61,133 @@ li:hover a {
 	margin: 0 20% 45px 20%;
 	padding: 10px 0 0 20px;
 	border: 1px solid blue;
-	display: flex;
+	display: flex; flex-direction: column;
 }
-
+#conteneur {
+	display: flex;
+	flex-direction: row;
+	height: calc(100% - 50px);
+}
 /*************************/
 /*          Test         */
 /*************************/
 .carousel { height: 300px; }
-.presentation { height: 600px; }
+.presentation { height: 800px;}
+
+
+/***************************************************************/
+/*						    Formulaire						   */
+/***************************************************************/
+form {
+	border: 1px solid green;
+	padding: 15px 0 15px 10px;
+	width: 250px;
+}
+label {
+	display: block;
+	margin-top: 5px;
+}
+textarea {
+	resize: none;
+}
+input, textarea, select {
+	width: 200px;
+}
+input[type=radio] {
+	width: 15px;
+}
+.radio {
+	display: inline;
+	margin: 0 0 0 0;
+}
+
+
+/***************************************************************/
+/*						    Preview Card					   */
+/***************************************************************/
+#create_card {
+	display: flex; flex-direction: row;
+}
+#preview {
+	border: 1px solid brown;
+	padding: 20px 20px 20px 20px;
+	width: 450px;
+}
+/***************************************************************/
+/*						     Card							   */
+/***************************************************************/
+.card {
+	/*Le ratio pour une carte est de 1.54*/
+	width: 300px;
+	height: 462px;
+	border: 1px solid black;
+	background-image: url('../img/card.png');
+}
+.textzone {
+	width: 260px;
+	height: 422px;
+	margin: 20px;
+	position: relative;
+}
+.title {
+	padding-top: 20px;
+	text-align: center;
+	width: 180px; margin-left: 40px;
+	font-size: 24px;
+}
+.description {
+	margin: auto;
+	margin-bottom: -5px;
+	width: 250px;
+	text-align: center;
+	border: 1px solid grey;
+}
+.img_card {
+	width: 250px; max-height: 220px;
+	margin-left: 5px;
+}
+.info { position: absolute; }
+#bonus2 {
+	right: 0px;
+}
+.right-bottom {
+	bottom: 1px;
+	right: 2px;
+}
+.left-bottom {
+	bottom: 1px;
+	left: 2px;
+}
+/***************************************************************/
+/*						    Admin Menu						   */
+/***************************************************************/
+.admin {
+	display: flex; flex-direction: column;
+	width: 250px;
+	height: 100%;
+	border-right: 1px solid black;
+	background-color: #302f30;
+}
+
+.admin h3, .admin a {
+	padding-left: 15px;
+	color: aliceblue;
+}
+.admin a {
+	text-decoration: none;
+	padding-top: 5px;
+	border-bottom: grey;
+}
+.admin a:hover {
+	color: darkred;
+	background-color: grey;
+}
+
+#content {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,46 @@
+* { margin: 0px; padding: 0px; }
+html, body { height: 100%; }
+/***************************************************************/
+/*							Header							   */
+/***************************************************************/
+header {
+    background-color: red;
+    display: flex;
+    height: 50px;
+}
+#logo {
+    width: 20%;
+    display: flex; justify-content: center;
+    align-items: center;
+}
+/*****************************/
+/* 			Menu 			 */
+.menu {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.connexion {
+    justify-content: flex-end;
+}
+ul {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+}
+ul li {
+    display: inline;
+    padding: 0 10px 0 15px;
+}
+/******************************/
+/*			Lien menu 		  */
+li a {
+    text-decoration: none;
+    color: black;
+}
+li:hover a {
+    color: white;
+}
+.active {
+    text-decoration: underline;
+}

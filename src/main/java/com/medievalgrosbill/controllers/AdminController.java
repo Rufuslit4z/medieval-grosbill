@@ -13,7 +13,7 @@ public class AdminController {
 	
 	@RequestMapping(value = {"","/","/index"}, method = RequestMethod.GET)
 	public String admins(Model model) {
-		
+		model.addAttribute("detailPath", BASE_URL);
 		return BASE_URL+"/index";
 	}
 }
