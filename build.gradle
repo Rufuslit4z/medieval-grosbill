@@ -39,6 +39,8 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	
 	// Security
-	// compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
-	// provided group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
+
+	// Session
+	compile('org.springframework.session:spring-session-jdbc')
 }
