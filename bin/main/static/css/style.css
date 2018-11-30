@@ -1,58 +1,3 @@
-* {
-	margin: 0px;
-	padding: 0px;
-}
-html, body {
-	height: 100%;
-}
-
-
-/***************************************************************/
-/*							Header							   */
-/***************************************************************/
-header {
-	background-color: red;
-	display: flex;
-	height: 50px;
-}
-#logo {
-	width: 20%;
-	display: flex; justify-content: center;
-	align-items: center;
-}
-/*****************************/
-/* 			Menu 			 */
-.menu {
-	width: 30%;
-	display: flex;
-	align-items: center;
-}
-.connexion {
-	justify-content: flex-end;
-}
-ul {
-	list-style: none;
-	display: flex;
-	align-items: baseline;
-}
-ul li {
-	display: inline;
-	padding: 0 10px 0 15px;
-}
-/******************************/
-/*			Lien menu 		  */
-li a {
-	text-decoration: none;
-	color: black;
-}
-li:hover a {
-	color: white;
-}
-.active {
-	text-decoration: underline;
-}
-
-
 /***************************************************************/
 /*						    Conteneur						   */
 /***************************************************************/
@@ -63,11 +8,7 @@ li:hover a {
 	border: 1px solid blue;
 	display: flex; flex-direction: column;
 }
-#conteneur {
-	display: flex;
-	flex-direction: row;
-	height: calc(100% - 50px);
-}
+
 /*************************/
 /*          Test         */
 /*************************/
@@ -157,37 +98,4 @@ input[type=radio] {
 .left-bottom {
 	bottom: 1px;
 	left: 2px;
-}
-/***************************************************************/
-/*						    Admin Menu						   */
-/***************************************************************/
-.admin {
-	display: flex; flex-direction: column;
-	width: 250px;
-	height: 100%;
-	border-right: 1px solid black;
-	background-color: #302f30;
-}
-
-.admin h3, .admin a {
-	padding-left: 15px;
-	color: aliceblue;
-}
-.admin a {
-	text-decoration: none;
-	padding-top: 5px;
-	border-bottom: grey;
-}
-.admin a:hover {
-	color: darkred;
-	background-color: grey;
-}
-
-#content {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	
-	width: 100%;
-	height: 100%;
 }
