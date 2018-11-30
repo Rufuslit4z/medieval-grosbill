@@ -29,7 +29,7 @@ public class RoleService extends BaseService<Role> {
 		return null;
 	}
 	
-	public void findByName(String name) {
-		this.roleRepository.findByName(name);
+	public Role findByName(String name) {
+		return this.roleRepository.findByName(name);
 	}
 }

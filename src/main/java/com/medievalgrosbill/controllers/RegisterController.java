@@ -1,5 +1,7 @@
 package com.medievalgrosbill.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.medievalgrosbill.models.Role;
 import com.medievalgrosbill.models.User;
 import com.medievalgrosbill.services.RoleService;
 import com.medievalgrosbill.services.users.UserService;
@@ -35,6 +38,7 @@ public class RegisterController {
 	public String registerSave(Model model, @ModelAttribute User user) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		user.setActive(0);
+		user.setRoles((List<Role>) this.roleService.findAll());
 		this.userService.save(user);
 		return BASE_URL;
 	}

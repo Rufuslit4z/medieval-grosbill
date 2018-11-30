@@ -61,6 +61,9 @@
 				<a href="<@spring.url '/admins/effect/show'/>">Effect</a>
 				<hr>
 				<a href="<@spring.url '/'/>">BACK</a>
+				<hr>
+				<h3><a href="<@spring.url '/admins/role'/>">ROLE</h3>
+				<hr>
 			</div>
 			
 			<div id="content">

@@ -33,7 +33,6 @@ public class EffectController {
 	
 	@RequestMapping(value = {"","/","/effect"}, method = RequestMethod.GET)
 	public String effect(Model model) {
-
 		return BASE_URL+"/effect";
 	}
 	

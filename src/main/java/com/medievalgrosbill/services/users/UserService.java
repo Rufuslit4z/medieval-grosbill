@@ -28,19 +28,19 @@ public class UserService extends BaseService<User> {
 		return null;
 	}
 	
-	User findByUsername(String username) {
+	public User findByUsername(String username) {
 		return this.userRepository.findByUsername(username);
 	}
 	
-	User findByEmail(String email) {
+	public User findByEmail(String email) {
 		return this.userRepository.findByEmail(email);
 	}
 	
-	List<User> findByActive(Integer active){
+	public List<User> findByActive(Integer active){
 		return this.userRepository.findByActive(active);
 	}
 	
-	User findByUsernameAndEmail(String username, String email) {
+	public User findByUsernameAndEmail(String username, String email) {
 		return this.userRepository.findByUsernameAndEmail(username, email);
 	}
 	
