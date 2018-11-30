@@ -1,49 +1,32 @@
 <#import "/spring.ftl" as spring/>
-<#include "../index.ftl" />
-<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 
-<div class="presentation">
+<#include "../menu_admin.ftl">
 
-<h1>Créer une carte</h1>
-
-		<div id="create_card">
-
-            <div id="preview">
-
-                <div class="card">
-                    <div class="textzone">
-                        <p class="info" id="bonus1">+3</p>
-                        <p class="info" id="bonus2">+3</p>
-                        <p class="title">Ma super carte de test</p>
-                        <p class="description">Ceci est un test d'une prévisualisation de la carte. Cette carte ne possède aucun bonus ni malus et sert donc juste à tester l'affichage de notre futur panel admin. Voilà voilà ^^</p>
-                        <img class="img_card" src="">
-                        <p class="info left-bottom">Gros</p>
-                        <p class="info right-bottom">200 pièces d'or</p>
-                    </div>
-                </div>
-
-            </div>
-
-<form action="${detailPath}/edit" method="POST" id="formulaire">
-    <label for="name">Nom :</label>
-    <input type="text" name="name" id="name" maxlength="64">
-    <label for="desc">Description :</label>
-    <textarea id="desc" name="description" maxlength="232" rows="9"></textarea>
-    <label for="img">Image :</label>
-    <input type="file" name="imgage" id="img" accept="image/*">
-    <label for="type">Type de carte :</label>
-    <select name="type" onchange="addForm()">
-        <option selected value="equipment">Equipement</option>
-        <option value="monster">Monstre</option>
-        <option value="curse">Malédiction</option>
-    </select>
-
-    <div id="insertForm"></div>
-    <div id="insertFormWeapon"></div>
-
-    <input type="submit" name="submit" value="Ajouter">
+<form action="${detailPath}/find" method="POST">
+    <label for="search">Rechercher :</label>
+    <input type="search" name="search" id="search">
 </form>
 
-        </div>
-
-<script src="<@spring.url '/javascript/cards/createCards.js'/>"></script>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Bonus/Level</th>
+        <th>Trésor</th>
+        <th>Effet</th>
+        <th>Modification</th>
+    </tr>
+<#if cards??>
+    <#list cards as c>
+        <tr>
+            <td>${c.name}</td>
+            <td>test</td>
+            <td><#if c.level??>${c.level}</#if><#if c.attack??>${c.attack}</#if></td>
+            <td><#if c.treasure??>${c.treasure}</#if></td>
+            <td><#if c.effect??>${c.effect}</#if></td>
+            <td><a href="${detailPath}/edit/${c.id}">Modifier</a> <a href="${detailPath}/delete/${c.id}">Supprimer</a></td>
+        </tr>
+    </#list>
+</#if>
+</table>
