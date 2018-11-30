@@ -106,7 +106,7 @@ public class CardController {
         } else if (form.getWeapon() != null) {
             this.cardService.save(form.getWeapon());
         }
-        return "redirect:"+this.BASE_URL+"/create";
+        return "redirect:"+this.BASE_URL;
     }
 
     @RequestMapping(value= {"/delete/{id}"}, method=RequestMethod.GET)
