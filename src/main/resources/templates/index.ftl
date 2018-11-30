@@ -26,7 +26,7 @@
 			<div class="menu connexion">
 				<nav>
 					<ul>
-						<li><a href="#">Login</a></li>
+						<li><a href="<@spring.url '/login'/>">Login</a></li>
 						<li><a href="<@spring.url '/register'/>">Register</a></li>
 					</ul>
 				</nav>

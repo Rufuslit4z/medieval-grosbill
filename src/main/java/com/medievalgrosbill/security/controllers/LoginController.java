@@ -13,6 +13,7 @@ import com.medievalgrosbill.security.CustomAuthenticationSuccessHandler;
 
 @Controller
 public class LoginController {
+	
 	public static final String FORM_PASSWORD = "password";
 	public static final String FORM_USERNAME = "username";
 	private static final String SECURITY_LOGIN = "/security/login";
