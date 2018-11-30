@@ -2,10 +2,8 @@ package com.medievalgrosbill.models.cards;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="monster")
 public class Monster extends Personnage {
 
     @Column(name="level")

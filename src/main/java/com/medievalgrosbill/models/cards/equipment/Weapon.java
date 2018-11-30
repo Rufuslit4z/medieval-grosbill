@@ -4,10 +4,8 @@ import com.medievalgrosbill.models.cards.Equipment;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="equip_weapon")
 public class Weapon extends Equipment {
 
     @Column(name="isOneHand")

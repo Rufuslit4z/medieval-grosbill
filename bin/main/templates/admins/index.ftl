@@ -103,3 +103,4 @@
 		</script>
 	</body>
 </html>
+<#include "menu_admin.ftl">
