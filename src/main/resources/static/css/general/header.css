@@ -7,6 +7,7 @@ header {
     background-color: red;
     display: flex;
     height: 50px;
+    box-shadow: 2px 4px 8px -6px black;
 }
 #logo {
     width: 20%;
@@ -58,9 +59,27 @@ li:hover a {
 }
 .close {
     position: absolute;
-    right: 6px;
-    top: 5px;
+    right: 1px;
+    top: -2px;
     transform: rotate(45deg) scale(1.5);
+}
+.closebis:hover a {
+    transition: 0.3s;
+    transform: rotate(45deg) scale(1.3);
+    color: white !important;
+}
+.closebis {
+    width: 28px;
+    height: 28px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    position: absolute;
+    right: 4px;
+    top: 6px;
+}
+.closebis:hover {
+    transition: 0.3s;
+    background-color: grey;
 }
 .error-input {
     color: red;

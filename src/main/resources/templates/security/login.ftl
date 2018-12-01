@@ -1,14 +1,16 @@
 <#import "/spring.ftl" as spring/>
 
 <div id="login" class="popup">
-    <a href="#" class="close" onclick="document.getElementById('login').style.display='none';">+</a>
+    <div class="closebis">
+        <a href="#" class="close" onclick="document.getElementById('login').style.display='none';">+</a>
+    </div>
     <h1>Se connecter</h1>
     <br>
     <form action="/login" method="POST">
         <label>Identifiant :</label>
-        <input class="form-control" type='text' name=''/>
+        <input class="form-control" type='text' name='username'/>
         <label>Mot de passe :</label>
-        <input class="form-control" type='password' name=''/>
+        <input class="form-control" type='password' name='password'/>
         <input type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
