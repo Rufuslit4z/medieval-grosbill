@@ -17,7 +17,7 @@
     </div>
     <div class="menu">
         <nav>
-            <ul>
+            <ul class="menu-header">
                 <li><a href="#">Règles</a></li>
                 <li><a href="#">Nouveauté</a></li>
                 <li><a href="#">Profil</a></li>

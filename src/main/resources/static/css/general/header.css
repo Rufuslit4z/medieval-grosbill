@@ -4,7 +4,8 @@ html, body { height: 100%; }
 /*							Header							   */
 /***************************************************************/
 header {
-    background-color: #0a62b9;
+    background-color: #9e7344;
+    overflow: hidden;
     display: flex;
     height: 50px;
     box-shadow: 2px 4px 8px -6px black;
@@ -35,15 +36,35 @@ ul li {
 }
 /******************************/
 /*			Lien menu 		  */
-li a {
+.menu-header a {
+    padding: 15px 15px 15px 15px;
+    color: white;
     text-decoration: none;
-    color: black;
+    background-color: #9e7344;
+}
+.menu-header a:hover {
+    transition: 0.1s;
+    background-color: #5a5754;
+    /*box-shadow: inset 9px 0 8px -10px #000000, inset -9px 0 8px -10px #000000;
+    color: #194169;*/
+}
+ul li {
+    padding: 0px;
 }
 li:hover a {
     color: white;
 }
 .active {
     text-decoration: underline;
+}
+/******************************/
+/*			Connexion 		  */
+.menu-login {
+    color: #5a5754;
+    background-color: #f8f8f8;
+    padding: 6px 15px 6px 15px;
+    border-radius: 30px;
+    text-decoration: none;
 }
 /***************************************************************/
 /*						Login/Register						   */
