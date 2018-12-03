@@ -8,23 +8,20 @@
     <div id="window">
 
         <div class="head_window">
-            <h1>Modifier un effet</h1>
+            <h1>Création d'effet</h1>
         </div>
 
         <form id="formulaire" action="${detailPath}/create" method="POST">
-
-            <input type="hidden" name="id" value="${effect.getId()}">
-
             <label>Nom :</label>
-            <input class="form-control" name="name" type="text" value="${effect.getName()}">
+            <input class="form-control" name="name" type="text" placeholder="name">
             <label>Type d'effet :</label>
             <select class="form-control" name="type">
-                <option <#if effect.getType() == "niveau"> selected</#if>>niveau</option>
-                <option <#if effect.getType() == "attaque"> selected</#if>>attaque</option>
-                <option <#if effect.getType() == "cartes"> selected</#if>>cartes</option>
+                <option value="">niveau(exemple)</option>
+                <option value="">attaque(exemple)</option>
+                <option value="">cartes(exemple)</option>
             </select>
             <label>Valeur :</label>
-            <input class="form-control" name="value" type="number" value="${effect.getValue()}">
+            <input class="form-control" name="value" type="number" value="0">
             <br>
             <input class="btn btn-success" type="submit" id="submit" value="Save">
 

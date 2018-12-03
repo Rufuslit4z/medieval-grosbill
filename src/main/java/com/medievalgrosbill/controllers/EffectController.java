@@ -31,54 +31,46 @@ public class EffectController {
 	@Autowired
 	private EffectService effectService;
 	
-	@RequestMapping(value = {"","/","/effect"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"","/","/index"}, method = RequestMethod.GET)
 	public String effect(Model model) {
-		return BASE_URL+"/effect";
+		model.addAttribute("detailPath", BASE_URL);
+		model.addAttribute("effects", this.effectService.findAll());
+		return BASE_URL+"/index";
 	}
-	
-	@RequestMapping(value = {"","/","/effect"}, method = RequestMethod.POST)
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String create(Model model) {
+		model.addAttribute("detailPath", BASE_URL);
+		return BASE_URL+"/create";
+	}
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String effectSave(@ModelAttribute Effect effect) {
 		this.effectService.save(effect);
 		return "redirect:"+BASE_URL;
 	}
 	
-	@RequestMapping(value= {"/find"}, method=RequestMethod.GET)
-	public String find(Model model) {
-		return BASE_URL+"/find";
+	@RequestMapping(value= "/find", method=RequestMethod.POST)
+	public String findWithCriteria(@RequestParam String search, Model model) {
+		if (!search.equals("")) {
+			model.addAttribute("effect", this.effectService.findByName(search));
+		}
+		model.addAttribute("detailPath", BASE_URL);
+		return BASE_URL+"/index";
 	}
 	
-	@RequestMapping(value= {"/find"}, method=RequestMethod.POST)
-	public String findWithCriteria(@RequestParam String name, Model model) {
-		model.addAttribute("effect", this.effectService.findByName(name));
-		model.addAttribute("error", "ERREUR : L'EFFET \""+name+"\" N'EXISTE PAS");
-		return BASE_URL+"/find";
-	}
-	
-	@RequestMapping(value = {"/show"}, method = RequestMethod.GET)
-	public String effectShow(Model model) {
-		model.addAttribute("effects", this.effectService.findAll());
-		return BASE_URL+"/show";
-	}
-	
-	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String effectDeleteById(@PathVariable Integer id) {
 		this.effectService.deleteById(id);
-		return "redirect:/admins";
-	}
-	
-	@RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
-	public String effectEdit(Model model, @PathVariable Integer id) {
-		
-		Optional<Effect> effect = this.effectService.find(id);
-		model.addAttribute("effect", effect.get());
-
-		return BASE_URL+"/edit";
-	}
-	
-	@RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
-	public String effectEditById(Model model, @ModelAttribute Effect effect) {
-		this.effectService.save(effect);
 		return "redirect:"+BASE_URL;
+	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String effectEdit(Model model, @PathVariable Integer id) {
+		model.addAttribute("detailPath", BASE_URL);
+		//Optional<Effect> effect = this.effectService.find(id);
+		model.addAttribute("effect", this.effectService.find(id).get());
+		return BASE_URL+"/edit";
 	}
 }
 

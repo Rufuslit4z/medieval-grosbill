@@ -18,10 +18,10 @@
     <div class="menu">
         <nav>
             <ul>
-                <li><a href="#">Rules</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="#">Règles</a></li>
+                <li><a href="#">Nouveauté</a></li>
                 <li><a href="#">Profil</a></li>
-                <li><a href="#">Rank</a></li>
+                <li><a href="#">Classement</a></li>
                 <li><a href="<@spring.url '/admins'/>">Admin Panel</a></li>
             </ul>
         </nav>
@@ -29,10 +29,13 @@
     <div class="menu connexion">
         <nav>
             <ul>
-                <li><a href="<@spring.url '/login'/>">Login</a></li>
-                <li><a href="<@spring.url '/registration'/>">Register</a></li>
-                <li><a href="<@spring.url '/logout'/>">Logout</a></li>
+                <li><a onclick="document.getElementById('login').style.display='block';" href="#">Connexion</a></li>
+                <li><a onclick="document.getElementById('register').style.display='block';" href="#">Inscription</a></li>
+                <li><a href="<@spring.url '/logout'/>">Déconnexion</a></li>
             </ul>
         </nav>
     </div>
 </header>
+
+<#include "../security/login.ftl">
+<#include "../security/registration.ftl">

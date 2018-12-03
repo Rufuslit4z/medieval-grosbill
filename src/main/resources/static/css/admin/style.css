@@ -8,6 +8,9 @@
     flex-direction: row;
     height: calc(100% - 50px);
 }
+#window {
+    width: calc(100% - 340px); /* 340px is width of .admin (menu) */
+}
 /*          Menu admin          */
 /********************************/
 .admin {
@@ -41,4 +44,20 @@
 }
 .admin li a {
     margin-left: 45px;
+}
+/***************************************************************/
+/*						    Admin Page						   */
+/***************************************************************/
+.head_window {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    margin-bottom: 50px;
+    box-shadow: 0px 5px 5px -4px #9C9C9C;
+}
+/*          Form style          */
+/********************************/
+#formulaire {
+    width: 400px;
 }

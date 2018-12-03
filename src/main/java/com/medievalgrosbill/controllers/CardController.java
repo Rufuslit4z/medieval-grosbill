@@ -33,7 +33,7 @@ public class CardController {
         model.addAttribute(BASE_ATTRIBUT_LIST,this.cardService.findAll());
         model.addAttribute("pageName",this.BASE_PAGE_NAME+" index");
         model.addAttribute("detailPath",this.BASE_URL);
-        return this.BASE_URL+"/index";
+        return BASE_URL+"/index";
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.POST)
@@ -42,7 +42,7 @@ public class CardController {
             model.addAttribute(BASE_ATTRIBUT_LIST,this.cardService.findByName(search));
         }
         model.addAttribute("detailPath",this.BASE_URL);
-        return this.BASE_URL+"/index";
+        return BASE_URL+"/index";
     }
 
     @RequestMapping(value= {"/create"}, method=RequestMethod.GET)
@@ -50,7 +50,7 @@ public class CardController {
         model.addAttribute("pageName",this.BASE_PAGE_NAME+" create");
         model.addAttribute("detailPath", this.BASE_URL);
         model.addAttribute("effect", this.effectService.findAll());
-        return this.BASE_URL+"/create";
+        return BASE_URL+"/create";
     }
 
     @RequestMapping(value= {"/edit/{id}"}, method=RequestMethod.GET)
@@ -86,7 +86,7 @@ public class CardController {
             model.addAttribute("switch","equipment");
         }
         model.addAttribute("detailPath",this.BASE_URL);
-        return this.BASE_URL+"/edit";
+        return BASE_URL+"/edit";
     }
 
     @RequestMapping(value= {"/create"}, method=RequestMethod.POST)
@@ -106,12 +106,12 @@ public class CardController {
         } else if (form.getWeapon() != null) {
             this.cardService.save(form.getWeapon());
         }
-        return "redirect:"+this.BASE_URL+"/create";
+        return "redirect:"+BASE_URL;
     }
 
     @RequestMapping(value= {"/delete/{id}"}, method=RequestMethod.GET)
     public String editDelete(@PathVariable Integer id) {
         this.cardService.deleteById(id);
-        return "redirect:"+this.BASE_URL;
+        return "redirect:"+BASE_URL;
     }
 }

@@ -1,18 +1,14 @@
 <#import "/spring.ftl" as spring/>
 
-<#include "../general/header.ftl">
-<head>
-    <link rel="stylesheet" type="text/css" href="<@spring.url '/css/admin/style.css'/>">
-</head>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/admin/style.css'/>">
 
-<div id="conteneur">
+<div class="admin">
+    <h3>Menu Admin</h3>
+    <ul>
+        <li><a href="/admins/cards">Cartes</a></li>
+        <li><a href="/admins/effect">Effets</a></li>
+        <li><a href="/admins/users">Utilisateurs</a></li>
+        <li><a href="/admins/roles">Roles</a></li>
+    </ul>
+</div>
 
-    <div class="admin">
-        <h3>MENU ADMIN</h3>
-        <ul>
-            <li><a href="<@spring.url '/admins/cards'/>">Cartes</a></li>
-            <li><a href="<@spring.url '/admins/effect'/>">Effet</a></li>
-            <li><a href="<@spring.url '/admins/user'/>">Utilisateur</a></li>
-            <li><a href="<@spring.url '/admins/role'/>">Role</a></li>
-        </ul>
-    </div>
