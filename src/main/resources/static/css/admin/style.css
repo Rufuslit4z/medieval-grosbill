@@ -10,6 +10,7 @@
 }
 #window {
     width: calc(100% - 340px); /* 340px is width of .admin (menu) */
+    overflow-y: scroll;
 }
 /*          Menu admin          */
 /********************************/
