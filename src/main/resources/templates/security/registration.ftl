@@ -5,12 +5,25 @@
     <h1>S'inscrire</h1>
     <br>
     <form action="/registration" method="POST">
+        
+        <#if postresult??>
+        	<#list postresult.getAllErrors() as e>
+        	<div>
+        		<label> getObjectName=${e.getObjectName()}</label>
+        		<label> getCode=${e.getCode()}</label>
+        		<label> rejectedValue=${e.rejectedValue}</label>
+        		<label> field=${e.field}</label>
+        	</div>
+        	</#list>
+		</#if>        
+		
         <label>Nom utilisateur :</label>
         <input class="form-control" type="text" name="username" value="">
-
+        
         <label>Adresse mail :</label>
         <input class="form-control" id="email" type="text" name="email" onkeyup="validateEmail()" value="">
         <p id="emailError" class="error-input" hidden>*L'adresse email n'est pas valide</p>
+
 
         <label>Mot de passe :</label>
         <input class="form-control" id="password" type="password" name="password" onkeyup="validatePassword()">
@@ -23,7 +36,7 @@
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <br>
-        <input class="btn btn-success" type="submit" value="S'inscrire">
+        <input class="btn btn-success" type="submit" value="S'inscrire">        
     </form>
 </div>
 

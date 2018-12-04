@@ -43,4 +43,6 @@ dependencies {
 
 	// Session
 	compile('org.springframework.session:spring-session-jdbc')
+	
+	compile group: 'org.thymeleaf', name: 'thymeleaf', version: '2.0.5'
 }

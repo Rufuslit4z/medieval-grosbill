@@ -1,9 +1,9 @@
 package com.medievalgrosbill.models.cards;
 
-import com.medievalgrosbill.services.Effect;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+
+import com.medievalgrosbill.models.Effect;
 
 @Entity
 public class Curse extends Card {

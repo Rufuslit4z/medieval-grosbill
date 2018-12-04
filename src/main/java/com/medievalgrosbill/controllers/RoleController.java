@@ -3,6 +3,7 @@ package com.medievalgrosbill.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +12,7 @@ import com.medievalgrosbill.models.Role;
 import com.medievalgrosbill.services.RoleService;
 
 @Controller
-@RequestMapping(name=RoleController.BASE_URL)
+@RequestMapping(name = RoleController.BASE_URL)
 public class RoleController {
 	
 	public static final String BASE_URL = "/admins/role";
@@ -23,13 +24,29 @@ public class RoleController {
 	@RequestMapping(value = {BASE_URL}, method=RequestMethod.GET)
 	public String role(Model model) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
-		return BASE_URL;
+		model.addAttribute("detailPath",BASE_URL);
+		model.addAttribute("roles", this.roleService.findAll());
+		return BASE_URL+"/index";
 	}
 	
-	@RequestMapping(value = {BASE_URL}, method=RequestMethod.POST)
-	public String add(Model model, @RequestParam String name) {
+	
+	@RequestMapping(value = {BASE_URL+"/create"}, method=RequestMethod.GET)
+	public String create(Model model) {
+		model.addAttribute("pageName", BASE_PAGE_NAME);
+		model.addAttribute("detailPath",BASE_URL);
+		return BASE_URL+"/create";
+	}
+	
+	@RequestMapping(value = {BASE_URL+"/create"}, method=RequestMethod.POST)
+	public String create(Model model, @RequestParam String name) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		this.roleService.save(new Role(name));
-		return BASE_URL;
+		return "redirect:"+BASE_URL;
+	}
+	
+	@RequestMapping(value = {BASE_URL+"/delete/{id}"}, method = RequestMethod.GET)
+	public String deleteById(@PathVariable Integer id) {
+		this.roleService.deleteById(id);
+		return "redirect:"+BASE_URL;
 	}
 }

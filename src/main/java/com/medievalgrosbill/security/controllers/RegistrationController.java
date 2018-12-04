@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,10 +41,11 @@ public class RegistrationController {
         this.userValidator.validate(user, bindingResult);
 
         model.addAttribute("postresult", bindingResult);
-        
+//        ObjectError e = new ObjectError("", "");
+//        e.getCode()
         if (bindingResult.hasErrors() || !user.getPassword().equals(passwordconfirm)) {
             model.addAttribute("postresult", bindingResult);
-        	return "redirect:/registration";
+        	return "/security/registration";
         }
 
         user.getRoles().add(this.roleService.findByName("USER"));

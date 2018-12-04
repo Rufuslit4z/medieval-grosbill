@@ -1,6 +1,7 @@
 package com.medievalgrosbill.database.users;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,6 +11,7 @@ import com.medievalgrosbill.models.User;
 
 public interface UserRepository extends BaseCRUDRepository<User>{
 	
+	Optional<User> findById(Integer id);
 	User findByUsername(String username);
 	User findByEmail(String email);
 	List<User> findByActive(Integer active);

@@ -7,8 +7,8 @@
     <ul>
         <li><a href="/admins/cards">Cartes</a></li>
         <li><a href="/admins/effect">Effets</a></li>
-        <li><a href="/admins/users">Utilisateurs</a></li>
-        <li><a href="/admins/roles">Roles</a></li>
+        <li><a href="/admins/user">Utilisateurs</a></li>
+        <li><a href="/admins/role">Roles</a></li>
     </ul>
 </div>
 
