@@ -1,0 +1,4 @@
+04/12 Avancement
+	- 1 tache finie
+	- 1 tache rejetée
+	Qualité de code 587erreurs

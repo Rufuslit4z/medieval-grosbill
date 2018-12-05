@@ -1,34 +1,33 @@
 <#import "/spring.ftl" as spring/>
+<#include "../../general/header.ftl">
 
-<html>
-    <head>
-        <title>Home Médieval GrosBill</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="<@spring.url '/css/form.css'/>">
-    </head>
-    <body>
-        <h1>CREATE EFFECT</h1>
-        <hr>
-        <form method="POST">
-            <div class="data">
-                <p> Effect name</p>
-                <input name="name" type="text" placeholder="name" value="${effect.getName()}">
-            </div>
-            <div class="data">
-                <p>Type effect</p>
-                <select name="type" size="1">
-                    <option <#if effect.getType() == "niveau"> selected</#if>>niveau</option>
-                    <option <#if effect.getType() == "attaque"> selected</#if>>attaque</option>
-                    <option <#if effect.getType() == "cartes"> selected</#if>>cartes</option>
-                </select>
-            </div>
-            <div class="data">
-                <p>Value</p>
-                <input name="value" type="number" value="${effect.getValue()}">
-            </div>
-            <div class="submit">
-                <input type="submit" id="submit" value="Save">
-            </div>
+<div id="conteneur">
+
+    <#include "../menu_admin.ftl">
+
+    <div id="window">
+
+        <div class="head_window">
+            <h1>Modifier un effet</h1>
+        </div>
+
+        <form id="formulaire" action="${detailPath}/create" method="POST">
+
+            <input type="hidden" name="id" value="${effect.getId()}">
+
+            <label>Nom :</label>
+            <input class="form-control" name="name" type="text" value="${effect.getName()}">
+            <label>Type d'effet :</label>
+            <select class="form-control" name="type">
+                <option <#if effect.getType() == "niveau"> selected</#if>>niveau</option>
+                <option <#if effect.getType() == "attaque"> selected</#if>>attaque</option>
+                <option <#if effect.getType() == "cartes"> selected</#if>>cartes</option>
+            </select>
+            <label>Valeur :</label>
+            <input class="form-control" name="value" type="number" value="${effect.getValue()}">
+            <br>
+            <input class="btn btn-success" type="submit" id="submit" value="Save">
+
         </form>
-    </body>
-</html>
+    </div>
+</div>

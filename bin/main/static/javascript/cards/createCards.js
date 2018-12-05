@@ -17,7 +17,7 @@ function printCost(c) {
 function insertMonsterForm() {
     reset();
     form.insertAdjacentHTML('beforeend',
-        '<label for="lvl">Niveau :</label> <input type="number" name="monster.level" id="lvl" min="1" max="99" onkeyup="bonus1.innerText=this.value;bonus2.innerText=this.value"> <label for="treasure">Trésor(s) gagné(s) :</label> <input type="number" name="monster.treasure" id="treasure" min="1" max="9" onkeyup="this.value>1?rightbot.innerText=this.value+\' trésors\':rightbot.innerText=this.value+\' trésor\';"> <label for="leak">Minimum fuite :</label> <select name="monster.leak" id="leak"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option><option value="4">4</option> <option value="5" selected>5</option> </select> <label for="malus">Action si fuite raté :</label> <select name="monster.malus" id="malus"> <option value="">Effet 1</option> <option value="">Effet 2</option> </select>'
+        '<label for="lvl">Niveau :</label> <input class="form-control" type="number" name="monster.level" id="lvl" min="1" max="99" onkeyup="bonus1.innerText=this.value;bonus2.innerText=this.value"> <label for="treasure">Trésor(s) gagné(s) :</label> <input class="form-control" type="number" name="monster.treasure" id="treasure" min="1" max="9" onkeyup="this.value>1?rightbot.innerText=this.value+\' trésors\':rightbot.innerText=this.value+\' trésor\';"> <label for="leak">Minimum fuite :</label> <select class="form-control" name="monster.leak" id="leak"> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option><option value="4">4</option> <option value="5" selected>5</option> </select> <label for="malus">Action si fuite raté :</label> <select class="form-control" name="monster.malus" id="malus"> <option value="">Effet 1</option> <option value="">Effet 2</option> </select>'
     );
     document.getElementById('name').setAttribute('name', "monster.name");
     document.getElementById("desc").setAttribute("name", "monster.description");
@@ -27,7 +27,7 @@ function insertMonsterForm() {
 function insertCurseForm() {
     reset();
     form.insertAdjacentHTML('beforeend',
-        '<label for="curse">Effet malédiction :</label> <select name="curse.effect" id="curse">'+ effectList +' </select>'
+        '<label for="curse">Effet malédiction :</label> <select class="form-control" name="curse.effect" id="curse">'+ effectList +' </select>'
     );
     document.getElementById('name').setAttribute('name', "curse.name");
     document.getElementById("desc").setAttribute("name", "curse.description");
@@ -37,14 +37,14 @@ function insertCurseForm() {
 function insertEquipmentForm() {
     reset();
     form.insertAdjacentHTML('beforeend',
-        '<label for="att">Point d\'attaque :</label> <input type="number" name="head.attack" id="att" min="0" max="9" onkeyup="bonus1.innerText=\'+\'+this.value;bonus2.innerText=\'+\'+this.value"> <label for="cost">Valeur pièce d\'or :</label> <input type="number" name="head.cost" id="cost" min="0" max="2000" onkeyup="printCost(this.value)"> <label for="type_equip">Type d\'équipement :</label> <select name="type_equip" id="type_equip" onChange="addEquipType()"> <option value="head">Couvre-chef</option> <option value="armor">Armure</option> <option value="boot">Bottes</option> <option value="weapon">Arme</option> <option value="other">Autres</option> </select> <label>Poids :</label> <input type="radio" name="head.bigItem" value=true id="big"> <label for="big" class="radio">Gros</label> <input type="radio" name="head.bigItem" value=false id="normal" checked> <label for="normal" class="radio">Normal</label>'
+        '<label for="att">Point d\'attaque :</label> <input class="form-control" type="number" name="head.attack" id="att" min="0" max="9" onkeyup="bonus1.innerText=\'+\'+this.value;bonus2.innerText=\'+\'+this.value"> <label for="cost">Valeur pièce d\'or :</label> <input class="form-control" type="number" name="head.cost" id="cost" min="0" max="2000" onkeyup="printCost(this.value)"> <label for="type_equip">Type d\'équipement :</label> <select class="form-control" name="type_equip" id="type_equip" onChange="addEquipType()"> <option value="head">Couvre-chef</option> <option value="armor">Armure</option> <option value="boot">Bottes</option> <option value="weapon">Arme</option> <option value="other">Autres</option> </select> <label>Poids :  </label><div class="custom-control custom-radio custom-control-inline"> <input class="custom-control-input" type="radio" name="head.bigItem" value=true id="big"> <label for="big" class="custom-control-label">Gros</label></div><div class="custom-control custom-radio custom-control-inline"> <input class="custom-control-input" type="radio" name="head.bigItem" value=false id="normal" checked> <label for="normal" class="custom-control-label">Normal</label></div>'
     );
 }
 
 function insertWeaponForm() {
     reset();
     formWeapon.insertAdjacentHTML('beforeend',
-        '<label>Nombres de main :</label> <input type="radio" name="weapon.hand" value=true id="1hand" checked> <label for="1hand" class="radio">1 main</label> <input type="radio" name="weapon.hand" value=false id="2hand"> <label for="2hand" class="radio">2 mains</label>'
+        '<label>Nombres de main :  </label><div class="custom-control custom-radio custom-control-inline"> <input class="custom-control-input" type="radio" name="weapon.hand" value=true id="1hand" checked> <label for="1hand" class="custom-control-label">1 main</label></div> <div class="custom-control custom-radio custom-control-inline"><input class="custom-control-input" type="radio" name="weapon.hand" value=false id="2hand"> <label for="2hand" class="custom-control-label">2 mains</label></div>'
     );
     document.getElementById('name').setAttribute('name', "weapon.name");
     document.getElementById("desc").setAttribute("name", "weapon.description");

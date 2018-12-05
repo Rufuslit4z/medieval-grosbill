@@ -16,32 +16,6 @@
 .presentation { height: 800px;}
 
 
-/***************************************************************/
-/*						    Formulaire						   */
-/***************************************************************/
-form {
-	border: 1px solid green;
-	padding: 15px 0 15px 10px;
-	width: 250px;
-}
-label {
-	display: block;
-	margin-top: 5px;
-}
-textarea {
-	resize: none;
-}
-input, textarea, select {
-	width: 200px;
-}
-input[type=radio] {
-	width: 15px;
-}
-.radio {
-	display: inline;
-	margin: 0 0 0 0;
-}
-
 
 /***************************************************************/
 /*						    Preview Card					   */
