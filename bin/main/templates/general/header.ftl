@@ -16,7 +16,7 @@
     <div id="logo">
         <p>Médieval GrosBill</p>
     </div>
-    <div class="menu">
+    <div id="menu1" class="menu">
         <nav>
             <ul class="menu-header">
                 <li><a href="#">Règles</a></li>
@@ -27,7 +27,7 @@
             </ul>
         </nav>
     </div>
-    <div class="menu connexion">
+    <div id="menu2" class="menu connexion">
         <nav>
             <ul>
                 <li><a class="menu-account btn-login" onclick="document.getElementById('login').style.display='block';" href="#">Connexion</a></li>
