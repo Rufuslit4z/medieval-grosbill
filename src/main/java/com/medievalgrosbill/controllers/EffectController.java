@@ -1,28 +1,20 @@
 package com.medievalgrosbill.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.medievalgrosbill.database.base.BaseCRUDRepository;
-import com.medievalgrosbill.database.effect.EffectRepository;
 import com.medievalgrosbill.models.Effect;
 import com.medievalgrosbill.services.EffectService;
-import com.medievalgrosbill.services.base.BaseService;
-
-import net.bytebuddy.asm.Advice.This;
 
 @Controller
-@RequestMapping(value = EffectController.BASE_URL)
+@RequestMapping(value=EffectController.BASE_URL)
 public class EffectController {
 	
 	public static final String BASE_URL = "/admins/effect";
@@ -30,27 +22,28 @@ public class EffectController {
 	
 	@Autowired
 	private EffectService effectService;
-	
-	@RequestMapping(value = {"","/","/index"}, method = RequestMethod.GET)
+
+	@RequestMapping(value = {"","/","/index"}, method=RequestMethod.GET)
 	public String effect(Model model) {
-		model.addAttribute("detailPath", BASE_URL);
+		model.addAttribute("pageName", BASE_PAGE_NAME);
+		model.addAttribute("detailPath",BASE_URL);
 		model.addAttribute("effects", this.effectService.findAll());
 		return BASE_URL+"/index";
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	@RequestMapping(value = {"/create"}, method=RequestMethod.GET)
 	public String create(Model model) {
 		model.addAttribute("detailPath", BASE_URL);
 		return BASE_URL+"/create";
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@RequestMapping(value = {"/create"}, method=RequestMethod.POST)
 	public String effectSave(@ModelAttribute Effect effect) {
 		this.effectService.save(effect);
 		return "redirect:"+BASE_URL;
 	}
 	
-	@RequestMapping(value= "/find", method=RequestMethod.POST)
+	@RequestMapping(value= {"/find"}, method=RequestMethod.POST)
 	public String findWithCriteria(@RequestParam String search, Model model) {
 		if (!search.equals("")) {
 			model.addAttribute("effect", this.effectService.findByName(search));
@@ -59,19 +52,16 @@ public class EffectController {
 		return BASE_URL+"/index";
 	}
 	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = {"/delete/{id}"}, method=RequestMethod.GET)
 	public String effectDeleteById(@PathVariable Integer id) {
 		this.effectService.deleteById(id);
 		return "redirect:"+BASE_URL;
 	}
 	
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = {"/edit/{id}"}, method=RequestMethod.GET)
 	public String effectEdit(Model model, @PathVariable Integer id) {
 		model.addAttribute("detailPath", BASE_URL);
-		//Optional<Effect> effect = this.effectService.find(id);
 		model.addAttribute("effect", this.effectService.find(id).get());
 		return BASE_URL+"/edit";
 	}
 }
-
-

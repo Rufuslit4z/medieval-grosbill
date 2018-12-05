@@ -33,7 +33,7 @@ public class UserValidator implements Validator {
         // ------------------------------ USER ------------------------------ //
         
         // Username vide
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Empty.userForm.username");
         
         // Username trop court || trop long
         if(user.getUsername().length() < 4 || user.getUsername().length() > 32) {
@@ -51,7 +51,7 @@ public class UserValidator implements Validator {
         // ------------------------------ EMAIL ----------------------------- //
         
         // Email vide
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Empty.userForm.email");
         
         // Email déjà existante
         if (this.userService.findByEmail(user.getEmail()) != null) {
@@ -68,7 +68,7 @@ public class UserValidator implements Validator {
         // ------------------------------ PASSWORD -------------------------- //
         
         // MDP vide
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Empty.userForm.password");
         
         // MDP trop court || trop long
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {

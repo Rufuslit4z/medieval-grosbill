@@ -11,9 +11,7 @@
         <input class="form-control" type='text' name='username'/>
         <label>Mot de passe :</label>
         <input class="form-control" type='password' name='password'/>
-        <input type="hidden"
-               name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <br>
         <input class="btn btn-success" name="submit" type="submit" value="Connexion">
     </form>
