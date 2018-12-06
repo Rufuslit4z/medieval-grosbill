@@ -1,6 +1,8 @@
 package com.medievalgrosbill.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -26,6 +28,13 @@ public class UserController {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		model.addAttribute("detailPath",this.BASE_URL);
 		model.addAttribute("users",this.userService.findAll());
+		
+		/*		Récupérer l'utilisateur connecté sur la page courante
+		 *		SecurityContext context = SecurityContextHolder.getContext();
+		 *		context.getAuthentication().getName() 
+		 * 
+		 */
+				
 		return BASE_URL+"/index";
 	}
 	

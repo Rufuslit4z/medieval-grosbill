@@ -17,6 +17,7 @@ public class FirebaseController {
 	@RequestMapping(value={"","/","/index"})
 	public String index(Model model) throws IOException {
 		model.addAttribute("notification",FirebaseNotificationObserver.getInstance().getNotification());
+		model.addAttribute("player",FirebaseNotificationObserver.getInstance().getNotification());
 		return BASE_URL+"/index";
 	}
 }
