@@ -1,4 +1,4 @@
-package com.medievalgrosbill.firebase;
+package com.medievalgrosbill.game;
 
 import java.io.FileInputStream;
 import java.io.IOException;

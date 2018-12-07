@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CardRepository extends BaseCRUDRepository<Card> {	
-    List<Card> findByNameContains(String name);
+	List<Card> findByNameContains(String name);
     List<Card> findByDtype(String name);
 }

@@ -1,33 +1,18 @@
 package com.medievalgrosbill.models.cards;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.util.ArrayList;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-
-import com.medievalgrosbill.services.cards.CardService;
-import com.medievalgrosbill.services.users.UserService;
 
 @Entity
 public class Player extends Personnage {
 
 	private ArrayList<Card> board;
 	private ArrayList<Card> hand;
-	
-	@Column(name="attack")
+		
 	private Integer attack;
-	
-	@Column(name="description")
-	private String description;
-	
-	@Column(name="img")
-	private String img;
-	
-    @Column(name="level")
     private Integer level;
-    
-	@Column(name="name")
-	private String name;
 	
 	public ArrayList<Card> getBoard() {
 		return board;
@@ -46,29 +31,20 @@ public class Player extends Personnage {
 	}
 	
 	public Integer getAttack() {
+		for(Card modifier: getBoard()) {
+			if(modifier instanceof Equipment) {
+				attack += ((Equipment) modifier).getAttack();
+			}
+		}
+		attack += getLevel();
+		
 		return attack;
 	}
 	
 	public void setAttack(Integer attack) {
 		this.attack = attack;
 	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	public String getImg() {
-		return img;
-	}
-	
-	public void setImg(String img) {
-		this.img = img;
-	}
-	
+		
 	public Integer getLevel() {
 		return level;
 	}
@@ -77,20 +53,9 @@ public class Player extends Personnage {
 		this.level = level;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Player(Integer attack, String description, String img, Integer level, String name) {
+	public Player(Integer attack, Integer level) {
 		super();
 		this.attack = attack;
-		this.description = description;
-		this.img = img;
 		this.level = level;		
-		this.name = name;
 	}	
 }

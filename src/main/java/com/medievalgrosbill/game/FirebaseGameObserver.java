@@ -1,4 +1,4 @@
-package com.medievalgrosbill.firebase;
+package com.medievalgrosbill.game;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
@@ -6,29 +6,28 @@ import java.util.concurrent.Executor;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.medievalgrosbill.firebase.models.Notification;
-import com.medievalgrosbill.models.cards.Player;
+import com.medievalgrosbill.game.models.FirebaseGame;
 
-public class FirebaseNotificationObserver {
+public class FirebaseGameObserver {
+
+	FirebaseGame firebaseGame;
 	
-	Notification notification;
-	
-	private FirebaseNotificationObserver() throws IOException {
-		this.notification = new Notification("notification",0);
-		firebaseNotificationsObserver(this.notification);
+	private FirebaseGameObserver() throws IOException {
+		this.firebaseGame = new FirebaseGame();
+		firebaseGamesObserver(this.firebaseGame);
 	}
 
-	private static FirebaseNotificationObserver INSTANCE = null;
+	private static FirebaseGameObserver INSTANCE = null;
 
-	public static synchronized FirebaseNotificationObserver getInstance() throws IOException {
+	public static synchronized FirebaseGameObserver getInstance() throws IOException {
 		if (INSTANCE == null) {
-			INSTANCE = new FirebaseNotificationObserver();
+			INSTANCE = new FirebaseGameObserver();
 		}
 		return INSTANCE;
 	}
 	
-	private void firebaseNotificationsObserver(Notification notification) throws IOException {
-		FirebaseOpenHelper.getInstance().getDatabase().getReference("/notifications").setValueAsync(notification).addListener(new Runnable() {
+	private void firebaseGamesObserver(FirebaseGame firebaseGame) throws IOException {
+		FirebaseOpenHelper.getInstance().getDatabase().getReference("/game").setValueAsync(firebaseGame).addListener(new Runnable() {
 			
 			public void run() {
 				System.out.println("run");
@@ -39,7 +38,7 @@ public class FirebaseNotificationObserver {
 				System.out.println("execute");
 			}
 		});;
-		FirebaseOpenHelper.getInstance().getDatabase().getReference("/notifications").addChildEventListener(new ChildEventListener() {
+		FirebaseOpenHelper.getInstance().getDatabase().getReference("/game").addChildEventListener(new ChildEventListener() {
 			
 			public void onChildRemoved(DataSnapshot snapshot) {
 				System.out.println("removed "+snapshot.getKey());
@@ -52,11 +51,11 @@ public class FirebaseNotificationObserver {
 			public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
 				System.out.println("changed "+snapshot.getKey());
 				if (snapshot.getKey().equals("name")) {
-					FirebaseNotificationObserver.this.notification.setName(snapshot.getValue().toString());
+					// FirebaseGameObserver.this.notification.setName(snapshot.getValue().toString());
 				}
 				if (snapshot.getKey().equals("clicks")) {
 					Integer clicks = Integer.valueOf(snapshot.getValue().toString());
-					FirebaseNotificationObserver.this.notification.setClicks(clicks);
+					// FirebaseGameObserver.this.notification.setClicks(clicks);
 				}	
 			}
 			
@@ -70,7 +69,7 @@ public class FirebaseNotificationObserver {
 		});
 	}
 
-	public Notification getNotification() {
-		return this.notification;
+	public FirebaseGame getFirebaseGame() {
+		return this.firebaseGame;
 	}
 }
