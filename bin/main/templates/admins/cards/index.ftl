@@ -34,7 +34,7 @@
             <#list cards as c>
                 <tr>
                     <td>${c.id}</td>
-                    <td>${c.name}</td>
+                    <td><#if c.name??>${c.name}</#if></td>
                     <td>test</td>
                     <td><#if c.level??>${c.level}</#if><#if c.attack??>${c.attack}</#if></td>
                     <td><#if c.treasure??>${c.treasure}</#if></td>

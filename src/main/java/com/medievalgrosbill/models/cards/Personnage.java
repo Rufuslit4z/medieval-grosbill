@@ -5,5 +5,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Personnage extends Card {
 
+	public Personnage() {
+		super();
+	}
 
 }

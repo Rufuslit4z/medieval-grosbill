@@ -29,6 +29,7 @@
             <div id="insertFormWeapon"></div>
 
             <input class="btn btn-success" type="submit" name="submit" value="Ajouter">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
     </div>

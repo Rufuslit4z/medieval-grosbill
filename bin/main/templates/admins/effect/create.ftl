@@ -24,7 +24,7 @@
             <input class="form-control" name="value" type="number" value="0">
             <br>
             <input class="btn btn-success" type="submit" id="submit" value="Save">
-
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </div>
 </div>
