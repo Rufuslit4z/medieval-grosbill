@@ -1,12 +1,18 @@
 package com.medievalgrosbill.security.services;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.medievalgrosbill.models.Role;
 import com.medievalgrosbill.models.User;
+import com.medievalgrosbill.models.cards.Card;
+import com.medievalgrosbill.models.cards.Equipment;
+import com.medievalgrosbill.models.cards.equipment.Weapon;
 import com.medievalgrosbill.services.RoleService;
+import com.medievalgrosbill.services.cards.CardService;
 import com.medievalgrosbill.services.users.UserService;
 
 @Service
@@ -17,6 +23,9 @@ public class PreLaunchService {
 	
 	@Autowired
 	private UserService serviceUser;
+	
+	@Autowired
+	private CardService cardService;
 	
 	@Transactional()
 	public void createFirstAdmin() {
@@ -33,5 +42,16 @@ public class PreLaunchService {
 			user.getRoles().add(role);
 			this.serviceUser.save(user);
 		}
+
+		// ADD CARD TO DATABASE
+		
+		Equipment sword = new Weapon(true);
+		sword.setName("Epée de féminisme exacerbé");
+		sword.setDescription("Réservé aux joueuses (ou aux joueurs qui ont changé de sexe)");
+		sword.setImg("/img");
+		sword.setAttack(3);
+		sword.setCost(400);
+			
+		cardService.save(sword);
 	}
 }

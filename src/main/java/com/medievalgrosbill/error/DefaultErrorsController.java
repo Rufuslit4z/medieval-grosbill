@@ -26,7 +26,7 @@ public class DefaultErrorsController {
 			modelAndView.addObject("form_username", LoginController.FORM_USERNAME);
 			modelAndView.addObject("form_password", LoginController.FORM_PASSWORD);
 			modelAndView.setViewName("/security/login");
-		}else {
+		} else {
 			ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
 					request.getDescription(false));
 

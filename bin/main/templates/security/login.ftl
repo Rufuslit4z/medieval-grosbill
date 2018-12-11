@@ -3,16 +3,17 @@
 
 <div class="conteneur">
     <div class="login">
-        <h1>Se connecter</h1>
-        <br>
-        <form action="/login" method="POST">
-            <label>Identifiant :</label>
-            <input class="form-control" type='text' name='username'/>
-            <label>Mot de passe :</label>
-            <input class="form-control" type='password' name='password'/>
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
+    <a href="#" class="close" onclick="document.getElementById('login').style.display='none';">+</a>
+    <h1>Se connecter</h1>
+    <br>
+    <form action="/login" method="POST">
+        <label>Identifiant :</label>
+        <input class="form-control" type='text' name='username'/>
+        <label>Mot de passe :</label>
+        <input class="form-control" type='password' name='password'/>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
             <br>
             <input class="btn btn-success" name="submit" type="submit" value="Connexion">
         </form>
