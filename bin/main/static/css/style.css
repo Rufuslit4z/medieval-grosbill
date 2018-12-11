@@ -3,21 +3,11 @@
 /***************************************************************/
 .conteneur {
 	width: 60%;
-	height: 700px;
-	margin: 50px 20% 0 20%;
-	padding: 20px;
-	box-shadow: 0px 3px 10px -3px #9f9f9f;
-	border-radius: 10px;
-	background-color: #fcfcfc;
-	color: #9e7344;
+	margin: 0 20% 45px 20%;
+	padding: 10px 0 0 20px;
+	border: 1px solid blue;
+	display: flex; flex-direction: column;
 }
-.login {
-	width: 400px;
-	margin: auto;
-	margin-top: 50px;
-}
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 /*************************/
 /*          Test         */
@@ -26,36 +16,6 @@
 .presentation { height: 800px;}
 
 
-=======
-/***************************************************************/
-/*						    Formulaire						   */
-/***************************************************************
-form {
-	border: 1px solid green;
-	padding: 15px 0 15px 10px;
-	width: 250px;
-}
-label {
-	display: block;
-	margin-top: 5px;
-}
-textarea {
-	resize: none;
-}
-input, textarea, select {
-	width: 200px;
-}
-input[type=radio] {
-	width: 15px;
-}
-.radio {
-	display: inline;
-	margin: 0 0 0 0;
-}
-*/
->>>>>>> ba1fbfc998c2b24c3650c770e7fd632982793ff2
-=======
->>>>>>> 8c0e7bbf339a9ded71ef43a0265de2f4089e063d
 
 /***************************************************************/
 /*						    Preview Card					   */
