@@ -1,28 +1,25 @@
 <#import "/spring.ftl" as spring/>
-<html>
-  <head>
-    <title tiles:fragment="title">Authentification</title>
-    <#include "/utils/bootstrap.ftl"/>
-  </head>
-  <body onload="document.f.username.focus();">
-    <h1>Spring Security Login (Freemarker)</h1>
+<#include "../general/header.ftl">
 
+<div class="conteneur">
+    <div class="login">
+    <a href="#" class="close" onclick="document.getElementById('login').style.display='none';">+</a>
+    <h1>Se connecter</h1>
+    <br>
     <form action="/login" method="POST">
-      <table>
-        <tr><td>User:</td><td><input type='text' name='${form_username}' value=''/></td></tr>
-        <tr><td>Password:</td><td><input type='password' name='${form_password}' value=''/></td></tr>
+        <label>Identifiant :</label>
+        <input class="form-control" type='text' name='username'/>
+        <label>Mot de passe :</label>
+        <input class="form-control" type='password' name='password'/>
         <input type="hidden"
-            name="${_csrf.parameterName}"
-            value="${_csrf.token}"/>
-        <tr><td colspan='2'><input name="submit" type="submit"></td></tr>
-        <tr><td colspan='2'><input name="reset" type="reset"></td></tr>
-      </table>
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+            <br>
+            <input class="btn btn-success" name="submit" type="submit" value="Connexion">
+        </form>
 
-    </form>
-
-  </body>
-</html>
-
-<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
+    <#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
     <h1>Bad credential</h1>
-</#if>
+    </#if>
+    </div>
+</div>

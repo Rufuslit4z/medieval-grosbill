@@ -1,8 +1,11 @@
 package com.medievalgrosbill.validators;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 //import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -24,23 +27,60 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");        
-        if(user.getUsername().length() < 4 || user.getUsername().length() > 32) {
-        	errors.rejectValue("username", "Size.userForm.username");
-        } 
-//        else if (this.userService.findByUsername(user.getUsername()) != null) {
-//        	errors.rejectValue("username", "Duplicate.userForm.username");
-//        }
+        String regexPassword = "^(?=.*?\\p{Lu})(?=.*?\\p{Ll})(?=.*?\\d)(?=.*?[`~!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?]).*$";
+        String regexEmail = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         
-                
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        // ------------------------------ USER ------------------------------ //
+        
+        // Username vide
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Empty.userForm.username");
+        
+        // Username trop court || trop long
+        if(user.getUsername().length() < 4 || user.getUsername().length() > 32) {
+        	errors.rejectValue("username", "Size.userForm.username", "Username trop court || trop long");
+        	
+        	System.out.println("Username trop court || trop long");
+        } 
+        
+        // Username déjà existant
+        if(this.userService.findByUsername(user.getUsername()) != null) {
+        	errors.rejectValue("username", "Duplicate.userForm.username");
+        	System.out.println("Username déjà existant");
+        }
+        
+        // ------------------------------ EMAIL ----------------------------- //
+        
+        // Email vide
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Empty.userForm.email");
+        
+        // Email déjà existante
         if (this.userService.findByEmail(user.getEmail()) != null) {
             errors.rejectValue("email", "Duplicate.userForm.email");
+            System.out.println("Email déjà existante");
         }
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+        
+        // Email incorrecte
+        if(!user.getEmail().matches(regexEmail)) {
+        	errors.rejectValue("email", "Misspelling.userForm.email");
+        	System.out.println("Email incorrecte");
+        }       
+        
+        // ------------------------------ PASSWORD -------------------------- //
+        
+        // MDP vide
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Empty.userForm.password");
+        
+        // MDP trop court || trop long
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
+            System.out.println("MDP trop court || trop long");
+        }
+        
+        // MDP incorrect
+        // Une lettre majuscule/minuscule, un chiffre et un caractère spécial
+        if(!user.getPassword().matches(regexPassword)) {
+        	errors.rejectValue("password", "Misspelling.userForm.password");
+        	System.out.println("MDP incorrect");
         }
     }
 }

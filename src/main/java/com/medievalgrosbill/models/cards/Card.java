@@ -12,24 +12,18 @@ import javax.persistence.Table;
 @Inheritance
 public class Card extends DBItem {
 
+	@Column(insertable = false, updatable = false)
+	private String dtype;
+	
     @Column(name="name")
     private String name;
+    
     @Column(name="description")
     private String description;
+    
     @Column(name="img")
-    private String image;
-
-    public Card() {
-        super();
-    }
-
-    public Card(String name, String description, String image) {
-        super();
-        this.name = name;
-        this.description = description;
-        this.image = image;
-    }
-
+    private String img;
+    
     public String getName() {
         return name;
     }
@@ -46,11 +40,22 @@ public class Card extends DBItem {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public String getImg() {
+        return img;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImg(String img) {
+        this.img = img;
+    }
+    
+    public Card() {
+        super();
+    }
+
+    public Card(String description, String img, String name) {
+        super();
+        this.description = description;
+        this.img = img;
+        this.name = name;
     }
 }

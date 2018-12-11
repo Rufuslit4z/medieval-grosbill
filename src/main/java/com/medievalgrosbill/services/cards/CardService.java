@@ -28,4 +28,8 @@ public class CardService extends BaseService<Card> {
     public List<Card> findByName(String name) {
         return this.cardRepository.findByNameContains(name);
     }
+    
+    public List<Card> findByDtype(String name){
+    	return this.cardRepository.findByDtype(name);
+    }
 }
