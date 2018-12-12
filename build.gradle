@@ -42,7 +42,7 @@ dependencies {
 	implementation 'com.google.firebase:firebase-admin:6.5.0'
 	
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	
+
 	// Security
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
 

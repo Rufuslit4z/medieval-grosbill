@@ -12,14 +12,11 @@ import com.medievalgrosbill.security.services.PreLaunchService;
 @SpringBootApplication
 public class MedievalgrosbillApplication {
 
-	public static void main(String[] args) {
-		
+public static void main(String[] args) {
 		SpringApplication.run(MedievalgrosbillApplication.class, args);
 	}
-	
 	@Autowired
 	PreLaunchService service;
-	
 	@Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return new CommandLineRunner() {

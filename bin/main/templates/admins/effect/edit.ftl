@@ -1,6 +1,5 @@
 <#import "/spring.ftl" as spring/>
 <#include "../../general/header.ftl">
-
 <div id="conteneur">
 
     <#include "../menu_admin.ftl">
@@ -28,7 +27,6 @@
             <br>
             <input class="btn btn-success" type="submit" id="submit" value="Save">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			
         </form>
     </div>
 </div>
