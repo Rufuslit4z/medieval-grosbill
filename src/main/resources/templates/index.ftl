@@ -7,4 +7,3 @@
 <div class="conteneur">
 	<h1>Présentation du jeu</h1>
 </div>
-

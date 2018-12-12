@@ -5,6 +5,9 @@ import java.util.List;
 import com.medievalgrosbill.database.DBItem;
 import com.medievalgrosbill.dtos.base.BaseDeleteCriteriaDTO;
 import com.medievalgrosbill.services.base.BaseService;
+
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,7 @@ public abstract class BaseController<T extends DBItem> {
 		model.addAttribute(BASE_ATTRIBUT_LIST,this.getBaseService().findAll());
 		model.addAttribute("pageName",this.getBasePageName()+" index");
 		model.addAttribute("detailPath",this.getBaseURL());
+
 		return this.getBaseURL()+"/index";
 	}
 

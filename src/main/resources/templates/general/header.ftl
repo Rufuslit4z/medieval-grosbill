@@ -22,21 +22,64 @@
     <div id="menu1" class="menu">
         <nav>
             <ul class="menu-header">
-                <li><a href="#">RÃ¨gles</a></li>
-                <li><a href="#">NouveautÃ©</a></li>
-                <li><a href="#">Profil</a></li>
+                <li><a href="#">Règles</a></li>
+                <li><a href="#">Nouveauté</a></li>
+                <#if isConnected == true>
+                <li>
+                	<a href="#">
+                		Profil
+                	</a>
+                </li>
+                </#if>
                 <li><a href="#">Classement</a></li>
-                <li><a href="<@spring.url '/admins'/>">Admin Panel</a></li>
-                <li><a href="<@spring.url '/game'/>">Jouer</a></li>
+                <#if isAdmin == true>
+                <li>
+                	<a href="<@spring.url '/admins'/>">
+                		Admin Panel
+                	</a>
+                </li>
+                </#if>
+                
+                <#if isConnected == true>
+                	<li>
+                		<a href="<@spring.url '/game'/>">
+                			Jouer
+                		</a>
+                	</li>
+                </#if>
             </ul>
         </nav>
     </div>
     <div id="menu2" class="menu connexion">
         <nav>
             <ul>
-                <li><a class="menu-account btn-login" onclick="document.getElementById('login').style.display='block';" href="#">Connexion</a></li>
-                <li><a class="menu-account btn-register" onclick="document.getElementById('register').style.display='block';" href="#">Inscription</a></li>
-                <li><a hidden class="menu-account btn-logout" href="<@spring.url '/logout'/>">DÃ©connexion</a></li>
+                <#if isConnected == false>
+                	<#if isOnRegister == true>
+	                <li>
+	                	<a class="menu-account btn-login" onclick="document.getElementById('login').style.display='block';" href="#">
+	                		Connexion
+	                	</a>
+	                </li>
+	                </#if>
+                </#if>
+                
+                <#if isConnected == false>
+	            	<#if isOnLogin == true>
+	                <li>
+	                	<a class="menu-account btn-register" onclick="document.getElementById('register').style.display='block';" href="#">
+	                		Inscription
+	                	</a>
+	                </li>
+	                </#if>
+                </#if>
+                
+                <#if isConnected == true>
+                	<li>
+                		<a class="menu-account btn-logout" href="<@spring.url '/logout'/>">
+                		Déconnexion
+                		</a>
+                	</li>
+                </#if>
             </ul>
         </nav>
     </div>

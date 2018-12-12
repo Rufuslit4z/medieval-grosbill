@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.medievalgrosbill.models.User;
 import com.medievalgrosbill.services.users.UserService;
@@ -23,34 +24,48 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = {"","/","/index"}, method=RequestMethod.GET)
+	@RequestMapping(value={"","/","/index"}, method=RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		model.addAttribute("detailPath",this.BASE_URL);
-		model.addAttribute("users",this.userService.findAll());
-		
-		/*		Récupérer l'utilisateur connecté sur la page courante
-		 *		SecurityContext context = SecurityContextHolder.getContext();
-		 *		context.getAuthentication().getName() 
-		 * 
-		 */
-				
+		model.addAttribute("users",this.userService.findAll());		
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return BASE_URL+"/index";
 	}
 	
-	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
-	public String deleteById(@PathVariable Integer id) {
+	@RequestMapping(value={"/delete/{id}"}, method=RequestMethod.GET)
+	public String deleteById(Model model, @PathVariable Integer id) {
 		this.userService.deleteById(id);
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return "redirect:"+BASE_URL;
 	}
 	
-	@RequestMapping(value = {"/active/{id}={active}"}, method = RequestMethod.GET)
-	public String enableOrDisableById(@PathVariable Integer id, @PathVariable Integer active) {
+	@RequestMapping(value={"/active/{id}={active}"}, method=RequestMethod.GET)
+	public String enableOrDisableById(Model model, @PathVariable Integer id, @PathVariable Integer active) {
 		User user = this.userService.findById(id).get();
 		System.out.println("ID : "+id);
 		System.out.println("ACTIVE : "+active);
 		user.setActive(active);
 		this.userService.save(user);
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return "redirect:"+BASE_URL;
 	}
 }

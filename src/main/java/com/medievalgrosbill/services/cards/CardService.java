@@ -3,6 +3,7 @@ package com.medievalgrosbill.services.cards;
 import com.medievalgrosbill.database.cards.CardRepository;
 import com.medievalgrosbill.database.base.BaseCRUDRepository;
 import com.medievalgrosbill.models.cards.Card;
+import com.medievalgrosbill.models.cards.Equipment;
 import com.medievalgrosbill.services.base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

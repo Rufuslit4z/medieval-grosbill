@@ -21,32 +21,60 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 	
-	@RequestMapping(value = {"","/","/index"}, method=RequestMethod.GET)
+	@RequestMapping(value={"","/","/index"}, method=RequestMethod.GET)
 	public String role(Model model) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		model.addAttribute("detailPath",BASE_URL);
 		model.addAttribute("roles", this.roleService.findAll());
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return BASE_URL+"/index";
 	}
 	
 	
-	@RequestMapping(value = {"/create"}, method=RequestMethod.GET)
+	@RequestMapping(value={"/create"}, method=RequestMethod.GET)
 	public String create(Model model) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		model.addAttribute("detailPath",BASE_URL);
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return BASE_URL+"/create";
 	}
 	
-	@RequestMapping(value = {"/create"}, method=RequestMethod.POST)
+	@RequestMapping(value={"/create"}, method=RequestMethod.POST)
 	public String create(Model model, @RequestParam String name) {
 		model.addAttribute("pageName", BASE_PAGE_NAME);
 		this.roleService.save(new Role(name));
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return "redirect:"+BASE_URL;
 	}
 	
 	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
-	public String deleteById(@PathVariable Integer id) {
+	public String deleteById(Model model, @PathVariable Integer id) {
 		this.roleService.deleteById(id);
+		// isConnected ?
+		model.addAttribute("isConnected", true);
+		model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
 		return "redirect:"+BASE_URL;
 	}
 }

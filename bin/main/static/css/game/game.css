@@ -1,0 +1,266 @@
+html {
+	background-image: url(fond.png);
+	background-size: cover;
+}
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+/******************************************************************/
+/*							Define border 						  */
+/******************************************************************/
+#shared-board {
+	position: absolute;
+	border: 1px solid red;
+	width: 740px;
+	height: 330px;
+	top: calc((100% - 330px)/ 2);
+	left: calc((100% - 740px)/ 2);
+}
+.play-card {
+	position: absolute;
+	width: 190px;
+	height: 280px;
+	border: 1px solid black;
+	top: calc((100% - 280px)/ 2);
+	left: calc((100% - 190px)/ 2);
+}
+.game-card {
+	position: absolute;
+	width: 120px;
+	height: 200px;
+	border: 1px solid black;
+	top: calc((100% - 200px)/ 2);
+}
+#draw-treasure {
+	right: 140px;
+}
+#discard-treasure {
+	right: 5px;
+}
+#draw-donjon {
+	left: 140px;
+}
+#discard-donjon {
+	left: 5px;
+}
+/******************************************************************/
+/******************************************************************/
+.sb_card {
+	width: 130px;
+	height: 200px;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+.game_card {
+	transition: 1.5s;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	background-size: cover;
+}
+.card-front {
+	transform: rotateY(0deg);
+}
+.card-back {
+	transform: rotateY(-180deg);
+}
+/*.sb_card:hover {
+	transition: 1s;
+	transform: scale(1.6);
+	z-index: 2;
+}*/
+.sb_card:hover .card-front {
+	transition: 1.5s;
+	transform: rotateY(180deg);
+}
+.sb_card:hover .card-back {
+	transition: 1.5s;
+	transform: rotateY(0deg);
+	z-index: 1;
+}
+.treasure {
+	background-image: url(treasure.png);
+}
+.donjon {
+	background-image: url(donjon.png);
+}
+/******************************************************************/
+/*							Player Board 						  */
+/******************************************************************/
+.board {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	border: 1px solid black;
+	height: 180px;
+}
+#main-board {
+	width: 1000px;
+	bottom: 0px;
+	left: calc((100% - 1000px)/ 2);
+}
+#player2-board {
+	width: 800px;
+	transform: rotate(90deg);
+	left: -310px;
+	top: calc((100% - 200px)/ 2);
+}
+#player3-board {
+	width: 800px;
+	transform: rotate(180deg);
+	left: calc((100% - 800px)/ 2);
+	top: 0px;
+}
+#player4-board {
+	width: 800px;
+	transform: rotate(-90deg);
+	right: -310px;
+	top: calc((100% - 200px)/ 2);
+}
+/*********************************************/
+/*				Information player			 */
+/*********************************************/
+.avatar {
+	position: absolute;
+	height: 145px;
+	width: 120px;
+	border: 1px solid green;
+	left: calc((100% - 120px)/ 2);
+	top: -130px;
+}
+.level, .attack {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: 1px solid red;
+	bottom: 18px;
+}
+.level {
+	left: -45px;
+}
+.attack {
+	right: -45px;
+}
+/*********************************************/
+/*				Hand of player 				 */
+/*********************************************/
+.hand {
+	transition: 0.3s;
+	position: absolute;
+	bottom: 0px;
+	left: calc((100% - 80%)/ 2);
+	height: 15px;
+	width: 80%;
+	background-color: rgba(0,0,0,0.4);
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+.hand:hover {
+	transition: 0.3s;
+	width: 100%;
+	height: 175%;
+	left: 0px;
+	background-color: rgba(0,0,0,0.6);
+	overflow: hidden;
+}
+.hand-visibility {
+	visibility: hidden;
+}
+.hand:hover .hand-visibility {
+	visibility: visible;
+}
+#handDragZone {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: 1px solid red;
+	/* width: 10px;
+	height: 10px; */
+}
+.handDragZoneHover {
+	width: calc(100% - 2px);
+	height: calc(100% - 2px);
+	background-color: red;
+}
+/******************************************************************/
+/*				Use for create a circle of card					  */
+/******************************************************************/
+.batton {
+	position: absolute;
+	height: 95%;
+	transform-origin: bottom;
+	left: calc((100% - 110px)/ 2);
+	margin-top: 17px;
+}
+.batton:hover {
+	transition: 0.3s;
+	z-index: 1;
+}
+.fix_batton {
+	position: absolute;
+	bottom: -282px;
+	left: calc((100% - 605px)/ 2);
+	border-radius: 50%;
+	width: 605px;
+	height: 434px;
+	z-index: 3;
+}
+/******************************************************************/
+/*					Define card of player board 				  */
+/******************************************************************/
+.cards {
+	display: flex;
+	justify-content: center;
+	height: 80%;
+	width: 100%;
+	/*border: 1px solid blue;*/
+}
+.card {
+	background-image: url(carte.jpg);
+	background-size: cover;
+	transition: 0.4s;
+	height: 140px;
+	width: 100px;
+	border: 2px solid black;
+	margin: 0 2px 0 2px;
+	background-color: grey;
+}
+.card:hover {
+	transition: 0.3s;
+	transform: scale(1.1);
+	box-shadow: 0px 0px 12px 3px white;
+	z-index: 8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
