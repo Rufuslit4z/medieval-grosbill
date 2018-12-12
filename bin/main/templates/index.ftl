@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring/>
-
 <#include "general/header.ftl">
 		
 <div class="conteneur carousel">

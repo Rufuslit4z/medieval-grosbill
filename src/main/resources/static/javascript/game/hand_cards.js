@@ -51,26 +51,62 @@ handCardsPlacement("hand_p3");
 ///////////////////////////////////////////////////////////////
 // 						  Drag'n'Drop						 //
 ///////////////////////////////////////////////////////////////
-var drop = document.querySelector('body');
+var drop = document.getElementById('handDropZone');
+var drag = document.getElementById('main-hand');
+var hand = document.getElementById('hand_p0');
+var mainCard = document.getElementById('main-cards');
+var c; //Copie de l'element drag
 
 // Autorise le drop sur chaque élément du plateau
 drop.addEventListener('dragover', function(e) {
     e.preventDefault();
 });
+
 // Vérifie l'endroit du drop
 drop.addEventListener('drop', function(e) {
     if (e.target.className !== "card" && e.target.className !== "hand") {
         // Mettre en jeu une carte
+        console.log(e.dataTransfer.getData('id'));
+        var card = document.createElement('div');
+        card.id = e.dataTransfer.getData('id');
+        card.className = "card";
+        mainCard.appendChild(card);
+        hand.removeChild(document.getElementById('select'));
+        handCardsPlacement("hand_p0");
+        c.style.display = "none";
+        hideDropZone();
+
     }
 });
 
-drop.addEventListener('dragstart', function(e) {
-    e.target.style.transform="scale(2)";
-    console.log('yes ' + e.target.className);
+// Initialise le drag pour la main
+drag.addEventListener('dragstart', function(e) {
+    e.target.id = "test";
+    e.dataTransfer.setData("id", e.target.id);
+    e.target.parentNode.id = "select";
+
+    // Créer une copie pour l'afficher à côté
+    c = e.target.cloneNode(true);
+    c.style.width = "250px";
+    c.style.height = "370px";
+    c.style.position = "absolute";
+    c.style.top = "calc((100% - 370px)/ 2)";
+    c.style.right = "50px";
+    document.body.appendChild(c);
+
+}, false);
+
+drag.addEventListener('dragend', function(e) {
+    c.style.display = "none";
 }, false);
 
 
-
+function displayDropZone() {
+    document.getElementById('handDropZone').className = "handDropZoneHover";
+};
+function hideDropZone() {
+    document.getElementById('handDropZone').classList.remove('handDropZoneHover');
+};
 
 
 

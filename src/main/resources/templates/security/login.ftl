@@ -2,8 +2,7 @@
 <#include "../general/header.ftl">
 
 <div class="conteneur">
-    <div class="login">
-    <a href="#" class="close" onclick="document.getElementById('login').style.display='none';">+</a>
+    <div class="center-contenu">
     <h1>Se connecter</h1>
     <br>
     <form action="/login" method="POST">

@@ -20,7 +20,7 @@
         <#case "monster">
             <label for="lvl">Niveau :</label>
             <input class="form-control" type="number" name="monster.level" id="lvl" min="1" max="99" value="${card.level}" onkeyup="bonus1.innerText=this.value;bonus2.innerText=this.value">
-            <label for="treasure">Tr�sor(s) gagn�(s) :</label>
+            <label for="treasure">Trésor(s) gagné(s) :</label>
             <input class="form-control" type="number" name="monster.treasure" id="treasure" min="1" max="9" value="${card.treasure}" onkeyup="this.value>1?rightbot.innerText=this.value+\' trésors\':rightbot.innerText=this.value+\' trésor\';">
             <label for="leak">Minimum fuite :</label>
             <select class="form-control" name="monster.leak" id="leak">
@@ -70,9 +70,10 @@
         </#if>
             <#break>
     </#switch>
-    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
             <input class="btn btn-success" type="submit" name="submit" value="Modifier">
         </form>
+
     </div>
 
 </div>
