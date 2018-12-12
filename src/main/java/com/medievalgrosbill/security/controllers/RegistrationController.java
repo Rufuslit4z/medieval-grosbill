@@ -35,26 +35,27 @@ public class RegistrationController {
         return "/security/registration";
     }
 	
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute User user, @RequestParam String passwordconfirm, BindingResult bindingResult, Model model) {
+	@RequestMapping(value={"/registration"}, method=RequestMethod.POST)
+    public String registration(Model model, @ModelAttribute User user, @RequestParam String passwordconfirm, BindingResult bindingResult) {
         this.userValidator.validate(user, bindingResult);
-        
         model.addAttribute("postresult", bindingResult);
-        
 //        ObjectError e = new ObjectError("", "");
 //        e.getDefaultMessage();
-        
         if (bindingResult.hasErrors() || !user.getPassword().equals(passwordconfirm)) {
             model.addAttribute("postresult", bindingResult);
         	return "/security/registration";
         }
-
         user.getRoles().add(this.roleService.findByName("USER"));
         user.setActive(1);
         this.userService.save(user);
-        
         this.userDetailsServiceImpl.autologin(user.getEmail(), user.getPassword());
-        
+		// isConnected ?
+		model.addAttribute("isConnected", false);
+		model.addAttribute("isAdmin", false);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", true);
         return "redirect:/";
     }
 }

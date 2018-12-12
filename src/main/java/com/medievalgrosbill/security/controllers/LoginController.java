@@ -31,18 +31,19 @@ public class LoginController {
 //		return SECURITY_LOGIN;
 //	}
 	
-	@RequestMapping(value = { LOGIN }, method = RequestMethod.GET)
+	@RequestMapping(value={LOGIN}, method=RequestMethod.GET)
 	public String login(Model model, Principal principal, HttpServletRequest request) throws Exception{
 		model.addAttribute("form_username",FORM_USERNAME);
 		model.addAttribute("form_password",FORM_PASSWORD);
-		
-		
 		String referer = request.getHeader("Referer"); //Get previous URL before call '/login'
-		
-		//save referer URL to session, for later use on CustomAuthenticationSuccesshandler
         request.getSession().setAttribute(CustomAuthenticationSuccessHandler.REDIRECT_URL_SESSION_ATTRIBUTE_NAME, referer); 
-
-
+		// isConnected ?
+		model.addAttribute("isConnected", false);
+		model.addAttribute("isAdmin", false);
+		// isOnLogin
+		model.addAttribute("isOnLogin", true);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
         return principal == null ?  SECURITY_LOGIN : "redirect:/"; 
     }
 }

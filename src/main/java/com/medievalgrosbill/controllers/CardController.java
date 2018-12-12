@@ -28,32 +28,53 @@ public class CardController {
     @Autowired
     private EffectService effectService;
 
-    @RequestMapping(value= {"","/","/index"}, method=RequestMethod.GET)
+    @RequestMapping(value={"","/","/index"}, method=RequestMethod.GET)
     public String index(Model model) {
         model.addAttribute(BASE_ATTRIBUT_LIST,this.cardService.findAll());
         model.addAttribute("pageName",this.BASE_PAGE_NAME+" index");
         model.addAttribute("detailPath",this.BASE_URL);
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
         return BASE_URL+"/index";
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    @RequestMapping(value= {"/find"}, method=RequestMethod.POST)
     public String find(Model model, @RequestParam String search) {
-        if (!search.equals("")) {
+    	model.addAttribute("detailPath",this.BASE_URL);
+    	if (!search.equals("")) {
             model.addAttribute(BASE_ATTRIBUT_LIST,this.cardService.findByName(search));
         }
-        model.addAttribute("detailPath",this.BASE_URL);
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
         return BASE_URL+"/index";
     }
 
-    @RequestMapping(value= {"/create"}, method=RequestMethod.GET)
+    @RequestMapping(value={"/create"}, method=RequestMethod.GET)
     public String create(Model model) {
         model.addAttribute("pageName",this.BASE_PAGE_NAME+" create");
         model.addAttribute("detailPath", this.BASE_URL);
         model.addAttribute("effect", this.effectService.findAll());
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
         return BASE_URL+"/create";
     }
 
-    @RequestMapping(value= {"/edit/{id}"}, method=RequestMethod.GET)
+    @RequestMapping(value={"/edit/{id}"}, method=RequestMethod.GET)
     public String edit(Model model, @PathVariable Integer id) {
         Card card = this.cardService.find(id).get();
         if (card instanceof Monster) {
@@ -86,11 +107,18 @@ public class CardController {
             model.addAttribute("switch","equipment");
         }
         model.addAttribute("detailPath",this.BASE_URL);
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
         return BASE_URL+"/edit";
     }
 
-    @RequestMapping(value= {"/create"}, method=RequestMethod.POST)
-    public String editSave(@ModelAttribute CompleteCardFormDTO form) {
+    @RequestMapping(value={"/create"}, method=RequestMethod.POST)
+    public String editSave(Model model, @ModelAttribute CompleteCardFormDTO form) {
         if (form.getMonster() != null) {
             this.cardService.save(form.getMonster());
         } else if (form.getCurse() != null) {
@@ -106,12 +134,18 @@ public class CardController {
         } else if (form.getWeapon() != null) {
             this.cardService.save(form.getWeapon());
         }
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
         return "redirect:"+BASE_URL;
     }
 
-    @RequestMapping(value= {"/delete/{id}"}, method=RequestMethod.GET)
-    public String editDelete(@PathVariable Integer id) {
+    @RequestMapping(value={"/delete/{id}"}, method=RequestMethod.GET)
+    public String editDelete(Model model, @PathVariable Integer id) {
         this.cardService.deleteById(id);
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
         return "redirect:"+BASE_URL;
     }
 }

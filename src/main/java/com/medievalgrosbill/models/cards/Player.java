@@ -1,7 +1,5 @@
 package com.medievalgrosbill.models.cards;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.ArrayList;
 import javax.persistence.Entity;
 

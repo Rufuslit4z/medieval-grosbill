@@ -7,6 +7,5 @@
 </div>
 	
 <div class="conteneur presentation">
-	<h1>PrÃ©sentation du jeu</h1>
+	<h1>Présentation du jeu</h1>
 </div>
-

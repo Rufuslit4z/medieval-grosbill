@@ -31,5 +31,4 @@ public class EffectService extends BaseService<Effect> {
 	public Effect findByName(String name) {
 		return this.effectRepository.findByName(name);
 	}
-	
 }
