@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home Médieval GrosBill</title>
+    <title>Médieval GrosBill</title>
     <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="<@spring.url '/img/logoIco.png'/>" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<@spring.url '/css/general/header.css'/>">
     <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.cs'/>">
@@ -14,7 +15,8 @@
 
 <header>
     <div id="logo">
-        <p>Médieval GrosBill</p>
+        <a href="../index.ftl"></a>
+        <img src="<@spring.url '/img/titre-logo.png'/>">
     </div>
     <div id="menu1" class="menu">
         <nav>
@@ -24,6 +26,7 @@
                 <li><a href="#">Profil</a></li>
                 <li><a href="#">Classement</a></li>
                 <li><a href="<@spring.url '/admins'/>">Admin Panel</a></li>
+                <li><a href="<@spring.url '/game'/>">Jouer</a></li>
             </ul>
         </nav>
     </div>
