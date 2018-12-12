@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(AdminController.BASE_URL)
 public class AdminController {
-public static final String BASE_URL = "/admins";
-private static final String BASE_PAGE_NAME = "Admins";
-//Ajouter une fonction de list des paths pour les different sous controller d'admin
-	
+
 	public static final String BASE_URL = "/admins";
 	private static final String BASE_PAGE_NAME = "Admins";
 	

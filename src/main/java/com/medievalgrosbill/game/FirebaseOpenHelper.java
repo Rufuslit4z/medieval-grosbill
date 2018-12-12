@@ -15,7 +15,7 @@ public class FirebaseOpenHelper {
 	private FirebaseDatabase defaultDatabase;
 	
 	private FirebaseOpenHelper() throws IOException {
-		FileInputStream serviceAccount = new FileInputStream("..\\medieval-grosbill-firebase-adminsdk-xgoet-bb56545ae9.json");
+		FileInputStream serviceAccount = new FileInputStream("./src/main/java/com/medievalgrosbill/game/medieval-grosbill-firebase-adminsdk-xgoet-bb56545ae9.json");
 		FirebaseOptions options = new FirebaseOptions.Builder()
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 				.setDatabaseUrl("https://medieval-grosbill.firebaseio.com").build();
