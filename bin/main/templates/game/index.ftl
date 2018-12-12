@@ -9,6 +9,7 @@
 </head>
 
 <script>
+	/*
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyDu5rfplbj9tvIkwj200FhOGfYQKRLb2hw",
@@ -19,6 +20,7 @@
         messagingSenderId: "533112807779"
     };
     firebase.initializeApp(config);
+    */
 </script>
 
 <body>
@@ -224,4 +226,4 @@
 </body>
 </html>
 
-	<script type="text/javascript" src="../../static/javascript/game/hand_cards.js"></script>
+<script type="text/javascript" src="../../static/javascript/game/hand_cards.js"></script>

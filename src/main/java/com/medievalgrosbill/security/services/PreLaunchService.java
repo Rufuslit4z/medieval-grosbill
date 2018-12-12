@@ -1,6 +1,7 @@
 package com.medievalgrosbill.security.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,29 +41,14 @@ public class PreLaunchService {
 			user.getRoles().add(role);
 			this.serviceUser.save(user);
 		}
-
-		// ADD CARD TO DATABASE
-		
-//		Equipment sword = null;
-//		
-//		System.out.println("EXISTE DEJA");
-//		
-//		if ((sword = (Equipment) this.cardService.findByName("Epée de féminisme exacerbé")) == null) {
-//		
-//			System.out.println("EXISTE DEJA");
-//			
-//			sword = new Weapon(true);
-//			sword.setName("Epée de féminisme exacerbé");
-//			sword.setDescription("Réservé aux joueuses (ou aux joueurs qui ont changé de sexe)");
-//			sword.setImg("/img");
-//			sword.setAttack(3);
-//			sword.setCost(400);
-//			
-//			System.out.println("EXISTE DEJA");
-//			
-//			this.cardService.save(sword);
-//			
-//			System.out.println("EXISTE DEJA");
-//		}
 	}
+	
+	@Transactional()
+	public void addUserRoleDatabase() {
+		Role role = null;
+		if ((role = this.serviceRole.findByName("USER")) == null) {
+			role = new Role("USER");
+			this.serviceRole.save(role);
+		}
+	}	
 }
