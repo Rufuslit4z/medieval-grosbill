@@ -30,7 +30,7 @@ body, html {
 .game-card {
 	position: absolute;
 	width: 120px;
-	height: 200px;
+	height: 188px;
 	border: 1px solid black;
 	top: calc((100% - 200px)/ 2);
 }
@@ -83,10 +83,12 @@ body, html {
 	z-index: 1;
 }
 .treasure {
-	background-image: url("/img/game/treasure.png");
+	background-size: cover;
+	background-image: url("/img/cartes/treasure.jpg");
 }
 .donjon {
-	background-image: url("/img/game/donjon.png");
+	background-size: cover;
+	background-image: url("/img/cartes/donjon.jpg");
 }
 /******************************************************************/
 /*							Player Board 						  */

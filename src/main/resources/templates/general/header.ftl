@@ -15,15 +15,15 @@
 
 <header>
     <div id="logo">
-        <a href="../index.ftl">
+        <a href="/">
             <img src="<@spring.url '/img/titre-logo.png'/>">
         </a>
     </div>
     <div id="menu1" class="menu">
         <nav>
             <ul class="menu-header">
-                <li><a href="#">Règles</a></li>
-                <li><a href="#">Nouveauté</a></li>
+                <li><a href="#">Rï¿½gles</a></li>
+                <li><a href="#">Nouveautï¿½</a></li>
                 <#if isConnected == true>
                 <li>
                 	<a href="#">
@@ -76,7 +76,7 @@
                 <#if isConnected == true>
                 	<li>
                 		<a class="menu-account btn-logout" href="<@spring.url '/logout'/>">
-                		Déconnexion
+                		Dï¿½connexion
                 		</a>
                 	</li>
                 </#if>
