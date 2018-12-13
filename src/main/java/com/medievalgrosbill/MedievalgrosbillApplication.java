@@ -25,6 +25,7 @@ public static void main(String[] args) {
 			public void run(String... args) throws Exception {
 				service.createFirstAdmin();
 				service.addUserRoleDatabase();
+				service.insertSessionDatabaseItems();
 			}
 		};
     }
