@@ -165,7 +165,7 @@ ul li {
     margin: auto;
 }
 .carousel {
-    background-image: url("../../img/carousel.jpg");
+    background-image: url("/img/carousel.jpg");
     background-size: cover;
     height: 390px;
 }

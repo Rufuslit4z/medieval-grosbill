@@ -102,10 +102,10 @@ drag.addEventListener('dragend', function(e) {
 
 
 function displayDropZone() {
-    document.getElementById('handDropZone').className = "handDropZoneHover";
+    drop.className = "handDropZoneHover";
 };
 function hideDropZone() {
-    document.getElementById('handDropZone').classList.remove('handDropZoneHover');
+    drop.classList.remove('handDropZoneHover');
 };
 
 

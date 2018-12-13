@@ -12,7 +12,7 @@
 
             <form class="form-inline my-2 my-lg-0" action="${detailPath}/find" method="POST">
                 <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Rechercher">
-                <button type="submit" class="btn btn-outline-success">Rechercher</button>
+                <button type="submit" name="search" class="btn btn-outline-success">Rechercher</button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
         </div>
