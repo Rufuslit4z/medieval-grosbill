@@ -15,8 +15,9 @@
 
 <header>
     <div id="logo">
-        <a href="../index.ftl"></a>
-        <img src="<@spring.url '/img/titre-logo.png'/>">
+        <a href="../index.ftl">
+            <img src="<@spring.url '/img/titre-logo.png'/>">
+        </a>
     </div>
     <div id="menu1" class="menu">
         <nav>

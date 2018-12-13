@@ -1,5 +1,5 @@
 html {
-	background-image: url(fond.png);
+	background-image: url("/img/game/fond.png");
 	background-size: cover;
 }
 body, html {
@@ -83,10 +83,10 @@ body, html {
 	z-index: 1;
 }
 .treasure {
-	background-image: url(treasure.png);
+	background-image: url("/img/game/treasure.png");
 }
 .donjon {
-	background-image: url(donjon.png);
+	background-image: url("/img/game/donjon.png");
 }
 /******************************************************************/
 /*							Player Board 						  */
@@ -174,18 +174,14 @@ body, html {
 .hand:hover .hand-visibility {
 	visibility: visible;
 }
-#handDragZone {
+#handDropZone {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	border: 1px solid red;
-	/* width: 10px;
-	height: 10px; */
 }
-.handDragZoneHover {
-	width: calc(100% - 2px);
-	height: calc(100% - 2px);
-	background-color: red;
+.handDropZoneHover {
+	width: 100%;
+	height: 100%;
 }
 /******************************************************************/
 /*				Use for create a circle of card					  */
@@ -221,7 +217,7 @@ body, html {
 	/*border: 1px solid blue;*/
 }
 .card {
-	background-image: url(carte.jpg);
+	background-image: url("/img/game/carte.jpg");
 	background-size: cover;
 	transition: 0.4s;
 	height: 140px;

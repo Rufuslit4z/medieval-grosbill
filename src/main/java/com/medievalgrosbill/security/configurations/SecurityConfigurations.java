@@ -32,12 +32,13 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 					.antMatchers("/", "/index", "/css/**", "/javascript/**"
 							,"/registration"
 							,"/errors/**"
-							,"/img/**")
+							,"/img/**"
+							)
 						.permitAll()
 					.antMatchers("/admins/**")
-						.access("hasRole('ROLE_ADMIN')")
-//					.anyRequest()
-//						.authenticated()
+					    .access("hasRole('ROLE_ADMIN')")
+					.anyRequest()
+						.authenticated()
 			.and()
 				.formLogin()
 					.loginPage(LoginController.LOGIN)

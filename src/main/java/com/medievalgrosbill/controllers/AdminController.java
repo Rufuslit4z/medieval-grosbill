@@ -12,7 +12,7 @@ import com.medievalgrosbill.services.users.UserService;
 @Controller
 @RequestMapping(AdminController.BASE_URL)
 public class AdminController {
-	
+
 	public static final String BASE_URL = "/admins";
 	private static final String BASE_PAGE_NAME = "Admins";
 	
