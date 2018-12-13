@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping(CardController.BASE_URL)
+@RequestMapping(value=CardController.BASE_URL)
 public class CardController {
 
-    private static final String BASE_ATTRIBUT_LIST = "cards";
-    private static final String BASE_ATTRIBUT = "card";
-    public static final String BASE_URL = "/admins/cards";
-    private static final String BASE_PAGE_NAME = "Cartes";
+	protected final static String BASE_URL = "/admins/cards";
+	
+    private final String BASE_ATTRIBUT_LIST = "cards";
+    private final String BASE_ATTRIBUT = "card";
+    private  final String BASE_PAGE_NAME = "Cartes";
 
     @Autowired
     private CardService cardService;

@@ -77,4 +77,20 @@ public class RoleController {
 		model.addAttribute("isOnRegister", false);
 		return "redirect:"+BASE_URL;
 	}
+	
+	@RequestMapping(value={"/find"}, method=RequestMethod.POST)
+    public String find(Model model, @RequestParam String search) {
+    	model.addAttribute("detailPath",this.BASE_URL);
+    	if (!search.equals("")) {
+            model.addAttribute("r", this.roleService.findByName(search));
+        }
+        // isConnected ?
+     	model.addAttribute("isConnected", true);
+     	model.addAttribute("isAdmin", true);
+		// isOnLogin
+		model.addAttribute("isOnLogin", false);
+		// isOnRegister
+		model.addAttribute("isOnRegister", false);
+        return BASE_URL+"/index";
+    }
 }

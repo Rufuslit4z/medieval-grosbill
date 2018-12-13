@@ -25,7 +25,6 @@
 </script>
 
 <body>
-
 	<div id="shared-board">
 		<div class="play-card"></div>
 		<div id="draw-treasure" class="game-card treasure">
@@ -223,7 +222,6 @@
 		</div>
 	</div>
 	
-
 </body>
 </html>
 

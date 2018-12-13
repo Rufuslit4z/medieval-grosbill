@@ -31,7 +31,26 @@
 				<th></th>
 				<th></th>
 			</tr>
-		<#list users as u>
+		<#if users??>
+			<#list users as u>
+				<tr>
+					<td><#if u.getId()??> ${u.getId()} <#else> NULL </#if></td>
+					<td><#if u.getUsername()??> ${u.getUsername()} <#else> NULL </#if></td>
+					<td><#if u.getEmail()??> ${u.getEmail()} <#else> NULL </#if></td>
+					<td><#if u.getActive()??> ${u.getActive()} <#else> NULL </#if></td>
+					<td>
+						<#if u.getRoles()??>
+						<#list u.getRoles() as roles>
+							${roles.getName()}
+						</#list>
+						<#else> NULL </#if>
+					</td>
+					<td><a class="btn btn-secondary" href="${detailPath}/active/${u.getId()}=${enable}">Activer</a></td>
+					<td><a class="btn btn-secondary" href="${detailPath}/active/${u.getId()}=${disable}">Désactiver</a></td>
+					<td><a class="btn btn-danger" href="${detailPath}/delete/${u.getId()}">Supprimer</a></td>
+				</tr>
+			</#list>
+		<#elseif u??>
 			<tr>
 				<td><#if u.getId()??> ${u.getId()} <#else> NULL </#if></td>
 				<td><#if u.getUsername()??> ${u.getUsername()} <#else> NULL </#if></td>
@@ -47,15 +66,8 @@
 				<td><a class="btn btn-secondary" href="${detailPath}/active/${u.getId()}=${enable}">Activer</a></td>
 				<td><a class="btn btn-secondary" href="${detailPath}/active/${u.getId()}=${disable}">Désactiver</a></td>
 				<td><a class="btn btn-danger" href="${detailPath}/delete/${u.getId()}">Supprimer</a></td>
-			</tr>
-		</#list>
+				</tr>
+		</#if>
 		</table>
 	</div>
 </div>
-
-
-
-<!--
-VOIR/SUPPRIMER/DESACTIVER
-AJOUTER UN ROLE/SUPPRIMER
--->

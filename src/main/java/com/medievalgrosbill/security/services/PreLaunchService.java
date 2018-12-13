@@ -1,6 +1,13 @@
 package com.medievalgrosbill.security.services;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +32,9 @@ public class PreLaunchService {
 	@Autowired
 	private CardService cardService;
 	
+	@Autowired
+	private DataSource dataSource;
+	
 	@Transactional()
 	public void createFirstAdmin() {
 		
@@ -40,29 +50,57 @@ public class PreLaunchService {
 			user.getRoles().add(role);
 			this.serviceUser.save(user);
 		}
-
-		// ADD CARD TO DATABASE
+	}
+	
+	@Transactional()
+	public void addUserRoleDatabase() {
+		Role role = null;
+		if ((role = this.serviceRole.findByName("USER")) == null) {
+			role = new Role("USER");
+			this.serviceRole.save(role);
+		}
+	}
+	
+	@Transactional()
+	public void insertSessionDatabaseItems() throws SQLException {
+		Connection connection = dataSource.getConnection();
 		
-//		Equipment sword = null;
-//		
-//		System.out.println("EXISTE DEJA");
-//		
-//		if ((sword = (Equipment) this.cardService.findByName("Epée de féminisme exacerbé")) == null) {
-//		
-//			System.out.println("EXISTE DEJA");
-//			
-//			sword = new Weapon(true);
-//			sword.setName("Epée de féminisme exacerbé");
-//			sword.setDescription("Réservé aux joueuses (ou aux joueurs qui ont changé de sexe)");
-//			sword.setImg("/img");
-//			sword.setAttack(3);
-//			sword.setCost(400);
-//			
-//			System.out.println("EXISTE DEJA");
-//			
-//			this.cardService.save(sword);
-//			
-//			System.out.println("EXISTE DEJA");
-//		}
+		ResultSet rs = connection.prepareStatement("SHOW TABLES").executeQuery();
+		
+		Boolean haveTable = false;
+		while (rs.next()) {
+			if (rs.getString(1).equals("SPRING_SESSION")) {
+				haveTable = true;
+			}
+		}
+
+		if (!haveTable) {
+			connection.createStatement()
+					.execute("CREATE TABLE SPRING_SESSION (" + 
+							"	PRIMARY_ID CHAR(36) NOT NULL," + 
+							"	SESSION_ID CHAR(36) NOT NULL," + 
+							"	CREATION_TIME BIGINT NOT NULL," + 
+							"	LAST_ACCESS_TIME BIGINT NOT NULL," + 
+							"	MAX_INACTIVE_INTERVAL INT NOT NULL," + 
+							"	EXPIRY_TIME BIGINT NOT NULL," + 
+							"	PRINCIPAL_NAME VARCHAR(100)," + 
+							"	CONSTRAINT SPRING_SESSION_PK PRIMARY KEY (PRIMARY_ID)" + 
+							") ENGINE=InnoDB ROW_FORMAT=DYNAMIC;");
+					connection.createStatement()
+					.execute("CREATE UNIQUE INDEX SPRING_SESSION_IX1 ON SPRING_SESSION (SESSION_ID);"); 
+							connection.createStatement()
+					.execute("CREATE INDEX SPRING_SESSION_IX2 ON SPRING_SESSION (EXPIRY_TIME);");
+							connection.createStatement()
+					.execute("CREATE INDEX SPRING_SESSION_IX3 ON SPRING_SESSION (PRINCIPAL_NAME);");
+					connection.createStatement()
+						.execute("CREATE TABLE SPRING_SESSION_ATTRIBUTES (" + 
+							"	SESSION_PRIMARY_ID CHAR(36) NOT NULL," + 
+							"	ATTRIBUTE_NAME VARCHAR(200) NOT NULL," + 
+							"	ATTRIBUTE_BYTES BLOB NOT NULL," + 
+							"	CONSTRAINT SPRING_SESSION_ATTRIBUTES_PK PRIMARY KEY (SESSION_PRIMARY_ID, ATTRIBUTE_NAME)," + 
+							"	CONSTRAINT SPRING_SESSION_ATTRIBUTES_FK FOREIGN KEY (SESSION_PRIMARY_ID) REFERENCES SPRING_SESSION(PRIMARY_ID) ON DELETE CASCADE" + 
+							") ENGINE=InnoDB ROW_FORMAT=DYNAMIC;");
+		}
+		connection.close();
 	}
 }

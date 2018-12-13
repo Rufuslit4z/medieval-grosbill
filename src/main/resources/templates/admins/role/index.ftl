@@ -23,13 +23,22 @@
 				<th>Name</th>
 				<th><a class="btn btn-success btn-sm" href="${detailPath}/create">Ajouter</a></th>
 			</tr>
-		<#list roles as r>
+			
+		<#if roles??>
+			<#list roles as r>
+				<tr>
+					<td><#if r.getId()??> ${r.getId()} <#else> NULL </#if></td>
+					<td><#if r.getName()??> ${r.getName()} <#else> NULL </#if></td>
+					<td><a class="btn btn-danger" href="${detailPath}/delete/${r.getId()}">Supprimer</a></td>
+				</tr>
+			</#list>
+		<#elseif r??>
 			<tr>
 				<td><#if r.getId()??> ${r.getId()} <#else> NULL </#if></td>
 				<td><#if r.getName()??> ${r.getName()} <#else> NULL </#if></td>
 				<td><a class="btn btn-danger" href="${detailPath}/delete/${r.getId()}">Supprimer</a></td>
 			</tr>
-		</#list>
+		</#if>
 		</table>
 	</div>
 </div>

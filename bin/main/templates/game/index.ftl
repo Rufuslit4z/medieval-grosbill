@@ -3,12 +3,13 @@
 <html>
 <head>
 	<title>Partie en cours</title>
-	<link rel="stylesheet" type="text/css" href="../../static/css/game/game.css">
+	<link rel="stylesheet" type="text/css" href="<@spring.url '/css/game/game.css'/>">
 	<meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
 </head>
 
 <script>
+	/*
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyDu5rfplbj9tvIkwj200FhOGfYQKRLb2hw",
@@ -19,10 +20,10 @@
         messagingSenderId: "533112807779"
     };
     firebase.initializeApp(config);
+    */
 </script>
 
 <body>
-
 	<div id="shared-board">
 		<div class="play-card"></div>
 		<div id="draw-treasure" class="game-card">
@@ -220,8 +221,11 @@
 		</div>
 	</div>
 	
-
 </body>
 </html>
 
-	<script type="text/javascript" src="../../static/javascript/game/hand_cards.js"></script>
+<<<<<<< HEAD
+<script type="text/javascript" src="../../static/javascript/game/hand_cards.js"></script>
+=======
+<script type="text/javascript" src="<@spring.url '/javascript/game/hand_cards.js'/>"></script>
+>>>>>>> master
